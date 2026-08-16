@@ -83,9 +83,15 @@
         <div class="section-label">03 — SELECTED WORK</div>
         <p>Some of my recent creative experiments and portfolio pieces.</p>
       </div>
-
+<div class="portfolio-filters">
+  <button class="filter-btn active" data-filter="all">All</button>
+  <button class="filter-btn" data-filter="graphic">Graphic Design</button>
+  <button class="filter-btn" data-filter="3d">3D Models</button>
+  <button class="filter-btn" data-filter="video">Video Editing</button>
+  <button class="filter-btn" data-filter="animation">Animation</button>
+</div>
       <h2 class="category-title">Graphic Design</h2>
-      <div class="portfolio-grid graphic-grid">
+      <div class="portfolio-grid graphic-grid" data-category="graphic">
         <article class="project-card tall"><img src="independence-day.jpg" alt="Independence Day graphic design"><div class="project-info"><span>Social Media Design</span><h3>Independence Day Creative</h3></div></article>
         <article class="project-card"><img src="mini-cooper.jpg" alt="Mini Cooper promotional graphic"><div class="project-info"><span>Automotive Poster</span><h3>Mini Cooper</h3></div></article>
         <article class="project-card"><img src="sprite-poster.jpg" alt="Sprite advertising poster"><div class="project-info"><span>Product Advertisement</span><h3>Sprite Campaign</h3></div></article>
@@ -93,7 +99,7 @@
       </div>
 
       <h2 class="category-title">3D Art / Interior Visualization</h2>
-      <div class="portfolio-grid">
+      <div class="portfolio-grid" data-category="3d">
         <article class="project-card wide"><img src="interior-01.jpg" alt="3D bathroom interior visualization"><div class="project-info"><span>Interior Visualization</span><h3>Modern Bathroom — Render 01</h3></div></article>
         <article class="project-card"><img src="interior-02.jpg" alt="3D bathroom interior wide render"><div class="project-info"><span>3D Interior</span><h3>Modern Bathroom — Render 02</h3></div></article>
       </div>

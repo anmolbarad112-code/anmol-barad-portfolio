@@ -20,10 +20,14 @@ filterButtons.forEach(button => {
     button.classList.add("active");
 
     portfolioGrids.forEach(grid => {
+      const heading = grid.previousElementSibling;
+
       if (filter === "all" || grid.dataset.category === filter) {
-        grid.parentElement.style.display = "";
+        grid.style.display = "";
+        if (heading) heading.style.display = "";
       } else {
-        grid.parentElement.style.display = "none";
+        grid.style.display = "none";
+        if (heading) heading.style.display = "none";
       }
     });
   });

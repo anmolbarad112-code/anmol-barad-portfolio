@@ -118,89 +118,94 @@ footer span {
   min-height: calc(100vh - 82px);
   max-width: var(--max);
   margin: auto;
-  padding: 70px 28px 80px;
+  padding: 70px 28px 60px;
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
   align-items: center;
-  gap: 55px;
+  gap: 20px;
   position: relative;
-}
-
-.eyebrow,
-.section-label {
-  font-size: 11px;
-  letter-spacing: 3px;
-  color: var(--accent);
-  font-weight: 700;
-  text-transform: uppercase;
+  overflow: hidden;
 }
 
 .hero h1 {
-  font: 600 clamp(70px, 10vw, 150px) / 0.82 "Space Grotesk";
+  font: 600 clamp(72px, 10vw, 150px) / 0.82 "Space Grotesk";
   letter-spacing: -7px;
-  margin: 22px 0 28px;
+  margin: 20px 0 26px;
   position: relative;
-  z-index: 2;
+  z-index: 3;
 }
 
 .hero h1 span {
   color: transparent;
-  -webkit-text-stroke: 1px #f5f3ee;
-}
-
-.hero-role {
-  font-size: 16px;
-  color: #ddd;
-  margin-bottom: 20px;
-}
-
-.hero-role b {
-  color: var(--accent);
-  margin: 0 7px;
+  -webkit-text-stroke: 1px #eee;
 }
 
 .hero-text {
   max-width: 560px;
   color: var(--muted);
   font-size: 16px;
-  line-height: 1.8;
+  line-height: 1.7;
 }
 
 .hero-actions {
   display: flex;
-  gap: 12px;
-  margin-top: 32px;
+  gap: 13px;
+  margin-top: 30px;
   flex-wrap: wrap;
 }
 
-.btn {
-  padding: 14px 21px;
-  border-radius: 2px;
-  font-weight: 700;
-  font-size: 13px;
-  transition: 0.3s ease;
+.hero-art {
+  height: 560px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.btn-primary {
-  background: var(--accent);
-  color: #080808;
+.hero-art img {
+  position: relative;
+  z-index: 2;
+  max-width: 100%;
+  max-height: 520px;
+  object-fit: contain;
+  filter:
+    drop-shadow(0 0 15px #d7ff3f30)
+    drop-shadow(0 0 45px #d7ff3f20);
+  transition: 0.5s ease;
 }
 
-.btn-primary:hover {
-  background: #ff6b36;
-  transform: translateY(-3px);
-  box-shadow: 0 12px 35px #ff5a1f35;
+.hero-art img:hover {
+  filter:
+    drop-shadow(0 0 22px #d7ff3f55)
+    drop-shadow(0 0 65px #d7ff3f30);
+  transform: scale(1.03);
 }
 
-.btn-ghost {
-  border: 1px solid #444;
-  color: #eee;
+.hero-number {
+  position: absolute;
+  right: 5%;
+  bottom: 5%;
+  font: 700 100px "Space Grotesk";
+  color: #151515;
+  z-index: 1;
 }
 
-.btn-ghost:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  transform: translateY(-3px);
+.orb-1 {
+  width: 220px;
+  height: 220px;
+  background: #d7ff3f18;
+  top: 8%;
+  right: 10%;
+  filter: blur(35px);
+}
+
+.orb-2 {
+  width: 120px;
+  height: 120px;
+  background: #ffffff08;
+  bottom: 12%;
+  left: 5%;
+  filter: blur(25px);
 }
 
 /* =========================

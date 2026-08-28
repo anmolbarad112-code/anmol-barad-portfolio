@@ -4,10 +4,8 @@
   --text: #f5f3ee;
   --muted: #aaa69e;
   --line: #292929;
-
   --accent: #ff5a1f;
   --accent2: #d9410f;
-
   --max: 1240px;
 }
 
@@ -28,13 +26,16 @@ body {
   overflow-x: hidden;
 }
 
-/* SUBTLE GRAIN */
+/* =========================
+   GRAIN
+========================= */
+
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
-  opacity: 0.04;
+  opacity: 0.035;
   z-index: 9999;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
@@ -45,7 +46,7 @@ a {
 }
 
 /* =========================
-HEADER
+   HEADER
 ========================= */
 
 .nav {
@@ -58,7 +59,7 @@ HEADER
   padding: 0 28px;
   border-bottom: 1px solid var(--line);
   position: relative;
-  z-index: 10;
+  z-index: 100;
 }
 
 .brand {
@@ -80,7 +81,7 @@ footer span {
 }
 
 .nav-links a {
-  transition: 0.25s;
+  transition: 0.25s ease;
 }
 
 .nav-links a:hover {
@@ -89,12 +90,15 @@ footer span {
 
 .nav-cta {
   border: 1px solid #555;
-  padding: 11px 18px;
+  padding: 11px 19px;
   border-radius: 30px;
+  transition: 0.25s ease;
 }
 
 .nav-cta:hover {
+  color: var(--accent);
   border-color: var(--accent);
+  box-shadow: 0 0 20px #ff5a1f18;
 }
 
 .menu-btn {
@@ -103,14 +107,11 @@ footer span {
   border: 0;
   color: white;
   font-size: 24px;
+  cursor: pointer;
 }
 
 /* =========================
-HERO
-========================= */
-
-/* =========================
-   HERO — PREMIUM ORANGE STYLE
+   HERO
 ========================= */
 
 .hero {
@@ -151,7 +152,6 @@ HERO
   font-size: 16px;
   color: #ddd;
   margin-bottom: 20px;
-  letter-spacing: 0.2px;
 }
 
 .hero-role b {
@@ -202,43 +202,9 @@ HERO
   color: var(--accent);
   transform: translateY(-3px);
 }
-}
-
-.hero-actions {
-  display: flex;
-  gap: 13px;
-  margin-top: 34px;
-  flex-wrap: wrap;
-}
-
-.btn {
-  padding: 14px 20px;
-  border-radius: 3px;
-  font-weight: 700;
-  font-size: 14px;
-  transition: 0.25s;
-}
-
-.btn-primary {
-  background: var(--accent);
-  color: #0a0a0a;
-}
-
-.btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 35px #d7ff3f20;
-}
-
-.btn-ghost {
-  border: 1px solid #444;
-}
-
-.btn-ghost:hover {
-  border-color: var(--accent);
-}
 
 /* =========================
-HERO ART
+   HERO ART
 ========================= */
 
 .hero-art {
@@ -247,6 +213,36 @@ HERO ART
   display: flex;
   align-items: center;
   justify-content: center;
+  isolation: isolate;
+}
+
+.hero-art::before {
+  content: "";
+  position: absolute;
+  width: 330px;
+  height: 330px;
+  border-radius: 50%;
+  background: #ff5a1f20;
+  filter: blur(70px);
+  z-index: -1;
+}
+
+.hero-art img {
+  position: relative;
+  z-index: 2;
+  max-width: 100%;
+  object-fit: contain;
+  filter:
+    drop-shadow(0 0 18px #ff5a1f30)
+    drop-shadow(0 0 55px #ff5a1f20);
+  transition: 0.5s ease;
+}
+
+.hero-art img:hover {
+  transform: scale(1.03);
+  filter:
+    drop-shadow(0 0 22px #ff5a1f50)
+    drop-shadow(0 0 70px #ff5a1f30);
 }
 
 .hero-card {
@@ -283,41 +279,23 @@ HERO ART
   bottom: 5%;
   font: 700 100px "Space Grotesk";
   color: #151515;
+  z-index: 0;
 }
 
 /* =========================
-   PROFILE PHOTO GLOW
-========================= */
-
-.hero-art img {
-  position: relative;
-  z-index: 2;
-  filter:
-    drop-shadow(0 0 12px #d7ff3f25)
-    drop-shadow(0 0 35px #d7ff3f18);
-  transition: 0.5s ease;
-}
-
-.hero-art img:hover {
-  filter:
-    drop-shadow(0 0 18px #d7ff3f45)
-    drop-shadow(0 0 55px #d7ff3f25);
-  transform: scale(1.03);
-}
-/* =========================
-ORBS
+   ORBS
 ========================= */
 
 .orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(1px);
+  filter: blur(2px);
 }
 
 .orb-1 {
   width: 180px;
   height: 180px;
-  background: #d7ff3f22;
+  background: #ff5a1f18;
   top: 5%;
   right: 12%;
 }
@@ -325,13 +303,13 @@ ORBS
 .orb-2 {
   width: 100px;
   height: 100px;
-  background: #fff1;
+  background: #ffffff08;
   bottom: 15%;
   left: 7%;
 }
 
 /* =========================
-SECTIONS
+   SECTIONS
 ========================= */
 
 .section {
@@ -346,7 +324,7 @@ SECTIONS
 }
 
 /* =========================
-ABOUT
+   ABOUT
 ========================= */
 
 .about-grid {
@@ -382,13 +360,25 @@ ABOUT
 
 .mini-stats {
   display: flex;
-  gap: 45px;
+  gap: 18px;
   margin-top: 45px;
+  flex-wrap: wrap;
 }
 
 .mini-stats div {
+  min-width: 125px;
+  padding: 22px 20px;
+  border: 1px solid #292929;
+  background: #0d0d0d;
   display: flex;
   flex-direction: column;
+  transition: 0.3s ease;
+}
+
+.mini-stats div:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px #000;
 }
 
 .mini-stats strong {
@@ -397,13 +387,14 @@ ABOUT
 }
 
 .mini-stats span {
-  font-size: 11px;
+  font-size: 10px;
   letter-spacing: 1px;
-  margin-top: 4px;
+  margin-top: 5px;
+  color: #999;
 }
 
 /* =========================
-SKILLS
+   SKILLS
 ========================= */
 
 .skills-grid {
@@ -421,12 +412,14 @@ SKILLS
   display: flex;
   flex-direction: column;
   position: relative;
-  transition: 0.3s;
+  transition: 0.35s ease;
+  background: #090909;
 }
 
 .skill-card:hover {
-  background: #121212;
-  transform: translateY(-5px);
+  background: #111;
+  transform: translateY(-6px);
+  border-color: #3a3a3a;
 }
 
 .skill-card > span {
@@ -455,14 +448,14 @@ SKILLS
 }
 
 /* =========================
-PORTFOLIO HEADER
+   PORTFOLIO HEADER
 ========================= */
 
 .portfolio-head {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
 
 .portfolio-head p {
@@ -473,7 +466,7 @@ PORTFOLIO HEADER
 }
 
 /* =========================
-PORTFOLIO FILTER TABS
+   FILTER TABS
 ========================= */
 
 .portfolio-filters {
@@ -491,7 +484,7 @@ PORTFOLIO FILTER TABS
   background: #0d0d0d;
   color: #8f8f8f;
   padding: 12px 22px;
-  border-radius: 4px;
+  border-radius: 3px;
   font-family: "DM Sans", sans-serif;
   font-size: 13px;
   font-weight: 600;
@@ -511,7 +504,7 @@ PORTFOLIO FILTER TABS
   background: var(--accent);
   color: #080808;
   border-color: var(--accent);
-  box-shadow: 0 6px 20px #d7ff3f18;
+  box-shadow: 0 6px 25px #ff5a1f25;
 }
 
 .filter-btn.active::after {
@@ -526,7 +519,7 @@ PORTFOLIO FILTER TABS
 }
 
 /* =========================
-CATEGORY TITLES
+   CATEGORY
 ========================= */
 
 .category-title {
@@ -540,7 +533,7 @@ CATEGORY TITLES
 }
 
 /* =========================
-PORTFOLIO GRID
+   PORTFOLIO GRID
 ========================= */
 
 .portfolio-grid {
@@ -558,6 +551,12 @@ PORTFOLIO GRID
   overflow: hidden;
   background: #151515;
   min-height: 300px;
+  border: 1px solid #222;
+  transition: 0.3s ease;
+}
+
+.project-card:hover {
+  border-color: #444;
 }
 
 .project-card img {
@@ -566,7 +565,7 @@ PORTFOLIO GRID
   min-height: 380px;
   object-fit: cover;
   display: block;
-  transition: 0.6s;
+  transition: 0.6s ease;
 }
 
 .project-card.tall img {
@@ -587,7 +586,7 @@ PORTFOLIO GRID
   right: 0;
   bottom: 0;
   padding: 60px 24px 24px;
-  background: linear-gradient(transparent, #000d);
+  background: linear-gradient(transparent, #000e);
 }
 
 .project-info span {
@@ -603,7 +602,7 @@ PORTFOLIO GRID
 }
 
 /* =========================
-COMING SOON
+   COMING SOON
 ========================= */
 
 .coming-grid {
@@ -621,6 +620,12 @@ COMING SOON
   justify-content: center;
   flex-direction: column;
   gap: 10px;
+  transition: 0.3s ease;
+}
+
+.coming-grid div:hover {
+  border-color: var(--accent);
+  background: #0e0e0e;
 }
 
 .coming-grid span {
@@ -634,7 +639,7 @@ COMING SOON
 }
 
 /* =========================
-CONTACT
+   CONTACT
 ========================= */
 
 .contact-box {
@@ -643,7 +648,9 @@ CONTACT
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 70px;
-  background: linear-gradient(135deg, #111, #0b0b0b);
+  background:
+    radial-gradient(circle at 80% 20%, #ff5a1f0c, transparent 35%),
+    linear-gradient(135deg, #111, #0b0b0b);
 }
 
 .contact h2 {
@@ -672,6 +679,12 @@ CONTACT
   margin-top: 28px;
   border-bottom: 1px solid #555;
   padding-bottom: 7px;
+  transition: 0.3s ease;
+}
+
+.email-link:hover {
+  color: var(--accent);
+  border-color: var(--accent);
 }
 
 .email-link span {
@@ -685,7 +698,7 @@ CONTACT
 }
 
 /* =========================
-FOOTER
+   FOOTER
 ========================= */
 
 footer {
@@ -733,11 +746,11 @@ footer {
 
 .footer-web:hover .web-icon {
   transform: rotate(180deg);
-  box-shadow: 0 0 15px #d7ff3f30;
+  box-shadow: 0 0 15px #ff5a1f30;
 }
 
 /* =========================
-ANIMATION
+   ANIMATION
 ========================= */
 
 .reveal {
@@ -757,7 +770,7 @@ ANIMATION
 }
 
 /* =========================
-CURSOR GLOW
+   CURSOR GLOW
 ========================= */
 
 .cursor-glow {
@@ -766,14 +779,14 @@ CURSOR GLOW
   height: 250px;
   border-radius: 50%;
   pointer-events: none;
-  background: #d7ff3f08;
+  background: #ff5a1f08;
   filter: blur(60px);
   transform: translate(-50%, -50%);
   z-index: -1;
 }
 
 /* =========================
-TABLET
+   TABLET
 ========================= */
 
 @media (max-width: 850px) {
@@ -805,7 +818,7 @@ TABLET
   }
 
   .hero-art {
-    height: 360px;
+    height: 430px;
   }
 
   .hero-card {
@@ -842,7 +855,7 @@ TABLET
 }
 
 /* =========================
-MOBILE
+   MOBILE
 ========================= */
 
 @media (max-width: 520px) {
@@ -852,17 +865,29 @@ MOBILE
   }
 
   .hero {
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 60px;
+    padding: 60px 20px 70px;
   }
 
   .hero h1 {
     letter-spacing: -5px;
+    font-size: clamp(58px, 18vw, 90px);
   }
 
   .hero-role {
     line-height: 1.8;
+  }
+
+  .hero-art {
+    height: 360px;
+  }
+
+  .hero-art::before {
+    width: 240px;
+    height: 240px;
+  }
+
+  .hero-number {
+    font-size: 70px;
   }
 
   .section {
@@ -874,7 +899,12 @@ MOBILE
   }
 
   .mini-stats {
-    gap: 22px;
+    gap: 10px;
+  }
+
+  .mini-stats div {
+    flex: 1;
+    min-width: 105px;
   }
 
   .contact-box {

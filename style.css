@@ -498,7 +498,7 @@ footer span {
 }
 
 /* =========================
-   FILTER TABS
+   PORTFOLIO FILTERS
 ========================= */
 
 .portfolio-filters {
@@ -512,31 +512,31 @@ footer span {
 
 .filter-btn {
   position: relative;
-  border: 1px solid #2d2d2d;
-  background: #0d0d0d;
-  color: #8f8f8f;
+  border: 1px solid #292929;
+  background: #0b0b0b;
+  color: #858585;
   padding: 12px 22px;
-  border-radius: 3px;
+  border-radius: 2px;
   font-family: "DM Sans", sans-serif;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.5px;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: all 0.3s ease;
 }
 
 .filter-btn:hover {
-  color: var(--text);
-  border-color: var(--accent);
-  background: #121212;
+  color: #fff;
+  border-color: #ff5a1f;
+  background: #111;
   transform: translateY(-2px);
 }
 
 .filter-btn.active {
-  background: var(--accent);
+  background: #ff5a1f;
   color: #080808;
-  border-color: var(--accent);
-  box-shadow: 0 6px 25px #ff5a1f25;
+  border-color: #ff5a1f;
+  box-shadow: 0 8px 25px #ff5a1f25;
 }
 
 .filter-btn.active::after {
@@ -546,22 +546,8 @@ footer span {
   bottom: -19px;
   width: 28px;
   height: 2px;
-  background: var(--accent);
+  background: #ff5a1f;
   transform: translateX(-50%);
-}
-
-/* =========================
-   CATEGORY
-========================= */
-
-.category-title {
-  font: 500 42px "Space Grotesk";
-  letter-spacing: -2px;
-  margin: 0 0 24px;
-}
-
-.category-title:not(:first-of-type) {
-  margin-top: 100px;
 }
 
 /* =========================

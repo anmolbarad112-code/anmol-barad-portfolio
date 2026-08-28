@@ -237,6 +237,25 @@ HERO ART
 }
 
 /* =========================
+   PROFILE PHOTO GLOW
+========================= */
+
+.hero-art img {
+  position: relative;
+  z-index: 2;
+  filter:
+    drop-shadow(0 0 12px #d7ff3f25)
+    drop-shadow(0 0 35px #d7ff3f18);
+  transition: 0.5s ease;
+}
+
+.hero-art img:hover {
+  filter:
+    drop-shadow(0 0 18px #d7ff3f45)
+    drop-shadow(0 0 55px #d7ff3f25);
+  transform: scale(1.03);
+}
+/* =========================
 ORBS
 ========================= */
 

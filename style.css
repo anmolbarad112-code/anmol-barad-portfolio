@@ -755,49 +755,65 @@ footer span {
 footer {
   max-width: var(--max);
   margin: auto;
-  border-top: 1px solid var(--line);
-  padding: 28px;
+  border-top: 1px solid #222;
+  padding: 32px 28px;
   font-size: 10px;
-  letter-spacing: 1.4px;
-  color: #777;
+  letter-spacing: 1.5px;
+  color: #666;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+footer::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 80px;
+  height: 1px;
+  background: #ff5a1f;
+  box-shadow: 0 0 12px #ff5a1f80;
 }
 
 .footer-web {
   display: flex;
   align-items: center;
-  gap: 8px;
-  transition: 0.25s ease;
+  gap: 10px;
+  transition: 0.3s ease;
 }
 
 .footer-web a {
-  color: #777;
+  color: #666;
   font-size: 10px;
-  letter-spacing: 1.4px;
-  transition: 0.25s ease;
+  letter-spacing: 1.5px;
+  transition: 0.3s ease;
 }
 
 .web-icon {
-  width: 18px;
-  height: 18px;
-  border: 1px solid var(--accent);
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ff5a1f;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--accent);
+  color: #ff5a1f;
   font-size: 9px;
-  transition: 0.25s ease;
+  transition: 0.3s ease;
+  box-shadow: 0 0 8px #ff5a1f20;
 }
 
 .footer-web:hover a {
-  color: var(--accent);
+  color: #ff5a1f;
 }
 
 .footer-web:hover .web-icon {
   transform: rotate(180deg);
-  box-shadow: 0 0 15px #ff5a1f30;
+  box-shadow:
+    0 0 12px #ff5a1f50,
+    0 0 25px #ff5a1f25;
 }
 
 /* =========================

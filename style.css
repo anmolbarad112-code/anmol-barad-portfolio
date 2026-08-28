@@ -1,54 +1,412 @@
-:root{
-  --bg:#080808;--panel:#111;--text:#f5f3ee;--muted:#aaa69e;--line:#242424;
-  --accent:#d7ff3f;--accent2:#9fbf22;--max:1240px;
+:root {
+  --bg: #080808;
+  --panel: #111;
+  --text: #f5f3ee;
+  --muted: #aaa69e;
+  --line: #242424;
+  --accent: #d7ff3f;
+  --accent2: #9fbf22;
+  --max: 1240px;
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:"DM Sans",sans-serif;overflow-x:hidden}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-a{color:inherit;text-decoration:none}
-.nav{height:82px;display:flex;align-items:center;justify-content:space-between;max-width:var(--max);margin:auto;padding:0 28px;border-bottom:1px solid var(--line);position:relative;z-index:10}
-.brand{font:700 28px "Space Grotesk";letter-spacing:-2px}.brand span,footer span{color:var(--accent)}
-.nav-links{display:flex;align-items:center;gap:34px;font-size:14px;color:#d2d2d2}.nav-links a{transition:.25s}.nav-links a:hover{color:var(--accent)}
-.nav-cta{border:1px solid #555;padding:11px 18px;border-radius:30px}.nav-cta:hover{border-color:var(--accent)}
-.menu-btn{display:none;background:none;border:0;color:white;font-size:24px}
-.hero{min-height:calc(100vh - 82px);max-width:var(--max);margin:auto;padding:90px 28px 80px;display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:40px}
-.eyebrow,.section-label{font-size:11px;letter-spacing:2.4px;color:var(--accent);font-weight:700}
-.hero h1{font:600 clamp(78px,12vw,170px)/.82 "Space Grotesk";letter-spacing:-8px;margin:24px 0 30px}.hero h1 span{color:transparent;-webkit-text-stroke:1px #eee}
-.hero-role{font-size:17px;color:#ddd;margin-bottom:22px}.hero-role b{color:var(--accent);margin:0 7px}
-.hero-text{max-width:580px;color:var(--muted);font-size:17px;line-height:1.7}
-.hero-actions{display:flex;gap:13px;margin-top:34px;flex-wrap:wrap}.btn{padding:14px 20px;border-radius:3px;font-weight:700;font-size:14px;transition:.25s}.btn-primary{background:var(--accent);color:#0a0a0a}.btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 35px #d7ff3f20}.btn-ghost{border:1px solid #444}.btn-ghost:hover{border-color:var(--accent)}
-.hero-art{height:560px;position:relative;display:flex;align-items:center;justify-content:center}
-.hero-card{width:310px;height:390px;border:1px solid #363636;transform:rotate(8deg);display:flex;flex-direction:column;justify-content:center;gap:13px;padding:30px;background:linear-gradient(145deg,#171717,#0c0c0c);box-shadow:30px 30px 80px #000}
-.hero-card span{font:600 40px "Space Grotesk";letter-spacing:-2px}.hero-card span:nth-child(2){color:var(--accent)}.hero-card span:nth-child(3){-webkit-text-stroke:1px #aaa;color:transparent}.hero-number{position:absolute;right:5%;bottom:5%;font:700 100px "Space Grotesk";color:#151515}
-.orb{position:absolute;border-radius:50%;filter:blur(1px)}.orb-1{width:180px;height:180px;background:#d7ff3f22;top:5%;right:12%}.orb-2{width:100px;height:100px;background:#fff1;bottom:15%;left:7%}
-.section{max-width:var(--max);margin:auto;padding:120px 28px;border-top:1px solid var(--line)}
-.section-label{margin-bottom:60px}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:90px}.big-statement{font:500 clamp(40px,5vw,70px)/1.05 "Space Grotesk";letter-spacing:-3px}.big-statement em{color:var(--accent);font-style:normal}
-.about-copy{max-width:540px;color:var(--muted);font-size:17px;line-height:1.8}.about-copy p+p{margin-top:18px}.about-copy strong{color:white}
-.mini-stats{display:flex;gap:45px;margin-top:45px}.mini-stats div{display:flex;flex-direction:column}.mini-stats strong{font:600 32px "Space Grotesk";color:var(--accent)}.mini-stats span{font-size:11px;letter-spacing:1px;margin-top:4px}
-.skills-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
-.skill-card{min-height:330px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:28px;display:flex;flex-direction:column;position:relative;transition:.3s}.skill-card:hover{background:#121212;transform:translateY(-5px)}.skill-card>span{font-size:12px;color:var(--muted)}.skill-card h3{font:600 40px/1 "Space Grotesk";letter-spacing:-2px;margin-top:auto}.skill-card p{color:var(--muted);line-height:1.6;margin-top:20px;font-size:14px}.skill-card small{color:var(--accent);font-size:9px;letter-spacing:1.5px;margin-top:18px}
-.portfolio-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:60px}.portfolio-head p{color:var(--muted);max-width:360px;font-size:14px;line-height:1.6}
-.category-title{font:500 42px "Space Grotesk";letter-spacing:-2px;margin:0 0 24px}.category-title:not(:first-of-type){margin-top:100px}
-.portfolio-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.graphic-grid{grid-template-columns:1.1fr .9fr}.project-card{position:relative;overflow:hidden;background:#151515;min-height:300px}.project-card img{width:100%;height:100%;min-height:380px;object-fit:cover;display:block;transition:.6s}.project-card.tall img{min-height:610px}.project-card.wide{grid-column:span 1}.project-card:hover img{transform:scale(1.045)}.project-info{position:absolute;left:0;right:0;bottom:0;padding:60px 24px 24px;background:linear-gradient(transparent,#000d)}.project-info span{font-size:10px;letter-spacing:1.6px;color:var(--accent);text-transform:uppercase}.project-info h3{font:500 26px "Space Grotesk";margin-top:5px}
-.coming-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:80px}.coming-grid div{height:180px;border:1px dashed #333;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px}.coming-grid span{font-size:10px;letter-spacing:2px;color:var(--muted)}.coming-grid strong{font:500 30px "Space Grotesk"}
-.contact-box{border:1px solid #2b2b2b;padding:65px;display:grid;grid-template-columns:1fr 1fr;gap:70px;background:linear-gradient(135deg,#111,#0b0b0b)}
-.contact h2{font:500 clamp(55px,7vw,90px)/.9 "Space Grotesk";letter-spacing:-5px;margin-top:22px}.contact h2 span{color:var(--accent)}
-.contact-right{align-self:end}.contact-right>p{color:var(--muted);line-height:1.7;max-width:400px}.email-link{display:inline-block;font:500 clamp(22px,3vw,38px) "Space Grotesk";margin-top:28px;border-bottom:1px solid #555;padding-bottom:7px}.email-link span{color:var(--accent)}.note{font-size:11px!important;margin-top:14px;color:#666!important}
-footer{max-width:var(--max);margin:auto;border-top:1px solid var(--line);padding:28px;font-size:10px;letter-spacing:1.4px;color:#777;display:flex;justify-content:space-between}
-.reveal{animation:up .9s ease both}@keyframes up{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:none}}
-.cursor-glow{position:fixed;width:250px;height:250px;border-radius:50%;pointer-events:none;background:#d7ff3f08;filter:blur(60px);transform:translate(-50%,-50%);z-index:-1}
-@media(max-width:850px){
- .nav-links{display:none;position:absolute;top:82px;left:0;right:0;background:#090909;padding:25px 28px;flex-direction:column;align-items:flex-start;border-bottom:1px solid var(--line)}
- .nav-links.open{display:flex}.menu-btn{display:block}.hero{grid-template-columns:1fr;padding-top:65px}.hero-art{height:360px}.hero-card{width:250px;height:300px}.hero-card span{font-size:31px}
- .about-grid,.contact-box{grid-template-columns:1fr;gap:45px}.skills-grid{grid-template-columns:1fr 1fr}.portfolio-grid,.graphic-grid{grid-template-columns:1fr}.project-card.tall img{min-height:430px}.coming-grid{grid-template-columns:1fr}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-@media(max-width:520px){
- .hero h1{letter-spacing:-5px}.hero-role{line-height:1.8}.section{padding:80px 20px}.nav{padding:0 20px}.hero{padding-left:20px;padding-right:20px}
- .skills-grid{grid-template-columns:1fr}.mini-stats{gap:22px}.contact-box{padding:30px}.contact h2{letter-spacing:-3px}.portfolio-head{display:block}.portfolio-head p{margin-top:18px}footer{padding:24px 20px;display:block;line-height:2}
+
+html {
+  scroll-behavior: smooth;
 }
-/* Professional Portfolio Filter Tabs */
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "DM Sans", sans-serif;
+  overflow-x: hidden;
+}
+
+/* SUBTLE GRAIN */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* =========================
+HEADER
+========================= */
+
+.nav {
+  height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: var(--max);
+  margin: auto;
+  padding: 0 28px;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  z-index: 10;
+}
+
+.brand {
+  font: 700 28px "Space Grotesk";
+  letter-spacing: -2px;
+}
+
+.brand span,
+footer span {
+  color: var(--accent);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  font-size: 14px;
+  color: #d2d2d2;
+}
+
+.nav-links a {
+  transition: 0.25s;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.nav-cta {
+  border: 1px solid #555;
+  padding: 11px 18px;
+  border-radius: 30px;
+}
+
+.nav-cta:hover {
+  border-color: var(--accent);
+}
+
+.menu-btn {
+  display: none;
+  background: none;
+  border: 0;
+  color: white;
+  font-size: 24px;
+}
+
+/* =========================
+HERO
+========================= */
+
+.hero {
+  min-height: calc(100vh - 82px);
+  max-width: var(--max);
+  margin: auto;
+  padding: 90px 28px 80px;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: 40px;
+}
+
+.eyebrow,
+.section-label {
+  font-size: 11px;
+  letter-spacing: 2.4px;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.hero h1 {
+  font: 600 clamp(78px, 12vw, 170px) / 0.82 "Space Grotesk";
+  letter-spacing: -8px;
+  margin: 24px 0 30px;
+}
+
+.hero h1 span {
+  color: transparent;
+  -webkit-text-stroke: 1px #eee;
+}
+
+.hero-role {
+  font-size: 17px;
+  color: #ddd;
+  margin-bottom: 22px;
+}
+
+.hero-role b {
+  color: var(--accent);
+  margin: 0 7px;
+}
+
+.hero-text {
+  max-width: 580px;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 13px;
+  margin-top: 34px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 14px 20px;
+  border-radius: 3px;
+  font-weight: 700;
+  font-size: 14px;
+  transition: 0.25s;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #0a0a0a;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 35px #d7ff3f20;
+}
+
+.btn-ghost {
+  border: 1px solid #444;
+}
+
+.btn-ghost:hover {
+  border-color: var(--accent);
+}
+
+/* =========================
+HERO ART
+========================= */
+
+.hero-art {
+  height: 560px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-card {
+  width: 310px;
+  height: 390px;
+  border: 1px solid #363636;
+  transform: rotate(8deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 13px;
+  padding: 30px;
+  background: linear-gradient(145deg, #171717, #0c0c0c);
+  box-shadow: 30px 30px 80px #000;
+}
+
+.hero-card span {
+  font: 600 40px "Space Grotesk";
+  letter-spacing: -2px;
+}
+
+.hero-card span:nth-child(2) {
+  color: var(--accent);
+}
+
+.hero-card span:nth-child(3) {
+  -webkit-text-stroke: 1px #aaa;
+  color: transparent;
+}
+
+.hero-number {
+  position: absolute;
+  right: 5%;
+  bottom: 5%;
+  font: 700 100px "Space Grotesk";
+  color: #151515;
+}
+
+/* =========================
+ORBS
+========================= */
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(1px);
+}
+
+.orb-1 {
+  width: 180px;
+  height: 180px;
+  background: #d7ff3f22;
+  top: 5%;
+  right: 12%;
+}
+
+.orb-2 {
+  width: 100px;
+  height: 100px;
+  background: #fff1;
+  bottom: 15%;
+  left: 7%;
+}
+
+/* =========================
+SECTIONS
+========================= */
+
+.section {
+  max-width: var(--max);
+  margin: auto;
+  padding: 120px 28px;
+  border-top: 1px solid var(--line);
+}
+
+.section-label {
+  margin-bottom: 60px;
+}
+
+/* =========================
+ABOUT
+========================= */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 90px;
+}
+
+.big-statement {
+  font: 500 clamp(40px, 5vw, 70px) / 1.05 "Space Grotesk";
+  letter-spacing: -3px;
+}
+
+.big-statement em {
+  color: var(--accent);
+  font-style: normal;
+}
+
+.about-copy {
+  max-width: 540px;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.about-copy p + p {
+  margin-top: 18px;
+}
+
+.about-copy strong {
+  color: white;
+}
+
+.mini-stats {
+  display: flex;
+  gap: 45px;
+  margin-top: 45px;
+}
+
+.mini-stats div {
+  display: flex;
+  flex-direction: column;
+}
+
+.mini-stats strong {
+  font: 600 32px "Space Grotesk";
+  color: var(--accent);
+}
+
+.mini-stats span {
+  font-size: 11px;
+  letter-spacing: 1px;
+  margin-top: 4px;
+}
+
+/* =========================
+SKILLS
+========================= */
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.skill-card {
+  min-height: 330px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: 0.3s;
+}
+
+.skill-card:hover {
+  background: #121212;
+  transform: translateY(-5px);
+}
+
+.skill-card > span {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.skill-card h3 {
+  font: 600 40px / 1 "Space Grotesk";
+  letter-spacing: -2px;
+  margin-top: auto;
+}
+
+.skill-card p {
+  color: var(--muted);
+  line-height: 1.6;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.skill-card small {
+  color: var(--accent);
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  margin-top: 18px;
+}
+
+/* =========================
+PORTFOLIO HEADER
+========================= */
+
+.portfolio-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 60px;
+}
+
+.portfolio-head p {
+  color: var(--muted);
+  max-width: 360px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* =========================
+PORTFOLIO FILTER TABS
+========================= */
 
 .portfolio-filters {
   display: flex;
@@ -69,9 +427,9 @@ footer{max-width:var(--max);margin:auto;border-top:1px solid var(--line);padding
   font-family: "DM Sans", sans-serif;
   font-size: 13px;
   font-weight: 600;
-  letter-spacing: .3px;
+  letter-spacing: 0.3px;
   cursor: pointer;
-  transition: all .25s ease;
+  transition: all 0.25s ease;
 }
 
 .filter-btn:hover {
@@ -99,7 +457,374 @@ footer{max-width:var(--max);margin:auto;border-top:1px solid var(--line);padding
   transform: translateX(-50%);
 }
 
-@media(max-width:520px) {
+/* =========================
+CATEGORY TITLES
+========================= */
+
+.category-title {
+  font: 500 42px "Space Grotesk";
+  letter-spacing: -2px;
+  margin: 0 0 24px;
+}
+
+.category-title:not(:first-of-type) {
+  margin-top: 100px;
+}
+
+/* =========================
+PORTFOLIO GRID
+========================= */
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.graphic-grid {
+  grid-template-columns: 1.1fr 0.9fr;
+}
+
+.project-card {
+  position: relative;
+  overflow: hidden;
+  background: #151515;
+  min-height: 300px;
+}
+
+.project-card img {
+  width: 100%;
+  height: 100%;
+  min-height: 380px;
+  object-fit: cover;
+  display: block;
+  transition: 0.6s;
+}
+
+.project-card.tall img {
+  min-height: 610px;
+}
+
+.project-card.wide {
+  grid-column: span 1;
+}
+
+.project-card:hover img {
+  transform: scale(1.045);
+}
+
+.project-info {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 60px 24px 24px;
+  background: linear-gradient(transparent, #000d);
+}
+
+.project-info span {
+  font-size: 10px;
+  letter-spacing: 1.6px;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+.project-info h3 {
+  font: 500 26px "Space Grotesk";
+  margin-top: 5px;
+}
+
+/* =========================
+COMING SOON
+========================= */
+
+.coming-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 80px;
+}
+
+.coming-grid div {
+  height: 180px;
+  border: 1px dashed #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.coming-grid span {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--muted);
+}
+
+.coming-grid strong {
+  font: 500 30px "Space Grotesk";
+}
+
+/* =========================
+CONTACT
+========================= */
+
+.contact-box {
+  border: 1px solid #2b2b2b;
+  padding: 65px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  background: linear-gradient(135deg, #111, #0b0b0b);
+}
+
+.contact h2 {
+  font: 500 clamp(55px, 7vw, 90px) / 0.9 "Space Grotesk";
+  letter-spacing: -5px;
+  margin-top: 22px;
+}
+
+.contact h2 span {
+  color: var(--accent);
+}
+
+.contact-right {
+  align-self: end;
+}
+
+.contact-right > p {
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 400px;
+}
+
+.email-link {
+  display: inline-block;
+  font: 500 clamp(22px, 3vw, 38px) "Space Grotesk";
+  margin-top: 28px;
+  border-bottom: 1px solid #555;
+  padding-bottom: 7px;
+}
+
+.email-link span {
+  color: var(--accent);
+}
+
+.note {
+  font-size: 11px !important;
+  margin-top: 14px;
+  color: #666 !important;
+}
+
+/* =========================
+FOOTER
+========================= */
+
+footer {
+  max-width: var(--max);
+  margin: auto;
+  border-top: 1px solid var(--line);
+  padding: 28px;
+  font-size: 10px;
+  letter-spacing: 1.4px;
+  color: #777;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-web {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: 0.25s ease;
+}
+
+.footer-web a {
+  color: #777;
+  font-size: 10px;
+  letter-spacing: 1.4px;
+  transition: 0.25s ease;
+}
+
+.web-icon {
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  font-size: 9px;
+  transition: 0.25s ease;
+}
+
+.footer-web:hover a {
+  color: var(--accent);
+}
+
+.footer-web:hover .web-icon {
+  transform: rotate(180deg);
+  box-shadow: 0 0 15px #d7ff3f30;
+}
+
+/* =========================
+ANIMATION
+========================= */
+
+.reveal {
+  animation: up 0.9s ease both;
+}
+
+@keyframes up {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* =========================
+CURSOR GLOW
+========================= */
+
+.cursor-glow {
+  position: fixed;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: #d7ff3f08;
+  filter: blur(60px);
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+/* =========================
+TABLET
+========================= */
+
+@media (max-width: 850px) {
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 82px;
+    left: 0;
+    right: 0;
+    background: #090909;
+    padding: 25px 28px;
+    flex-direction: column;
+    align-items: flex-start;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 65px;
+  }
+
+  .hero-art {
+    height: 360px;
+  }
+
+  .hero-card {
+    width: 250px;
+    height: 300px;
+  }
+
+  .hero-card span {
+    font-size: 31px;
+  }
+
+  .about-grid,
+  .contact-box {
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .portfolio-grid,
+  .graphic-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card.tall img {
+    min-height: 430px;
+  }
+
+  .coming-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================
+MOBILE
+========================= */
+
+@media (max-width: 520px) {
+
+  .nav {
+    padding: 0 20px;
+  }
+
+  .hero {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 60px;
+  }
+
+  .hero h1 {
+    letter-spacing: -5px;
+  }
+
+  .hero-role {
+    line-height: 1.8;
+  }
+
+  .section {
+    padding: 80px 20px;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mini-stats {
+    gap: 22px;
+  }
+
+  .contact-box {
+    padding: 30px;
+  }
+
+  .contact h2 {
+    letter-spacing: -3px;
+  }
+
+  .portfolio-head {
+    display: block;
+  }
+
+  .portfolio-head p {
+    margin-top: 18px;
+  }
+
   .portfolio-filters {
     gap: 7px;
     margin-bottom: 35px;
@@ -115,41 +840,22 @@ footer{max-width:var(--max);margin:auto;border-top:1px solid var(--line);padding
     bottom: -15px;
     width: 20px;
   }
-}
-/* WEB PORTFOLIO */
 
-.footer-web{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  transition:.25s ease;
-}
+  .category-title {
+    font-size: 34px;
+  }
 
-.footer-web a{
-  color:#777;
-  font-size:10px;
-  letter-spacing:1.4px;
-  transition:.25s ease;
-}
+  .project-info h3 {
+    font-size: 22px;
+  }
 
-.web-icon{
-  width:18px;
-  height:18px;
-  border:1px solid var(--accent);
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:var(--accent);
-  font-size:9px;
-  transition:.25s ease;
-}
+  footer {
+    padding: 24px 20px;
+    display: block;
+    line-height: 2;
+  }
 
-.footer-web:hover a{
-  color:var(--accent);
-}
-
-.footer-web:hover .web-icon{
-  transform:rotate(180deg);
-  box-shadow:0 0 15px #d7ff3f30;
+  .footer-web {
+    margin: 8px 0;
+  }
 }

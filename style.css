@@ -57,7 +57,7 @@ a {
   max-width: var(--max);
   margin: auto;
   padding: 0 28px;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid #222;
   position: relative;
   z-index: 100;
 }
@@ -65,11 +65,17 @@ a {
 .brand {
   font: 700 28px "Space Grotesk";
   letter-spacing: -2px;
+  transition: 0.3s ease;
 }
 
 .brand span,
 footer span {
-  color: var(--accent);
+  color: #ff5a1f;
+}
+
+.brand:hover {
+  color: #ff5a1f;
+  text-shadow: 0 0 20px #ff5a1f35;
 }
 
 .nav-links {
@@ -77,28 +83,48 @@ footer span {
   align-items: center;
   gap: 34px;
   font-size: 14px;
-  color: #d2d2d2;
+  color: #bdbdbd;
 }
 
 .nav-links a {
-  transition: 0.25s ease;
+  position: relative;
+  transition: 0.3s ease;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -7px;
+  width: 0;
+  height: 1px;
+  background: #ff5a1f;
+  box-shadow: 0 0 8px #ff5a1f60;
+  transition: 0.3s ease;
 }
 
 .nav-links a:hover {
-  color: var(--accent);
+  color: #ff5a1f;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
 }
 
 .nav-cta {
-  border: 1px solid #555;
+  border: 1px solid #444;
   padding: 11px 19px;
   border-radius: 30px;
-  transition: 0.25s ease;
+  transition: 0.3s ease;
 }
 
 .nav-cta:hover {
-  color: var(--accent);
-  border-color: var(--accent);
-  box-shadow: 0 0 20px #ff5a1f18;
+  color: #ff5a1f;
+  border-color: #ff5a1f;
+  box-shadow:
+    0 0 15px #ff5a1f18,
+    inset 0 0 10px #ff5a1f08;
+  transform: translateY(-2px);
 }
 
 .menu-btn {
@@ -108,6 +134,11 @@ footer span {
   color: white;
   font-size: 24px;
   cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.menu-btn:hover {
+  color: #ff5a1f;
 }
 
 /* =========================

@@ -334,68 +334,87 @@ footer span {
 
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 90px;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 100px;
+  align-items: start;
 }
 
 .big-statement {
-  font: 500 clamp(40px, 5vw, 70px) / 1.05 "Space Grotesk";
-  letter-spacing: -3px;
+  font: 500 clamp(42px, 5vw, 72px) / 1.02 "Space Grotesk";
+  letter-spacing: -3.5px;
+  max-width: 700px;
 }
 
 .big-statement em {
-  color: var(--accent);
+  color: #ff5a1f;
   font-style: normal;
+  text-shadow: 0 0 25px #ff5a1f25;
 }
 
 .about-copy {
   max-width: 540px;
   color: var(--muted);
-  font-size: 17px;
+  font-size: 16px;
   line-height: 1.8;
 }
 
 .about-copy p + p {
-  margin-top: 18px;
+  margin-top: 20px;
 }
 
 .about-copy strong {
-  color: white;
+  color: #f5f3ee;
 }
 
 .mini-stats {
   display: flex;
-  gap: 18px;
-  margin-top: 45px;
+  gap: 14px;
+  margin-top: 42px;
   flex-wrap: wrap;
 }
 
 .mini-stats div {
-  min-width: 125px;
+  min-width: 130px;
   padding: 22px 20px;
   border: 1px solid #292929;
-  background: #0d0d0d;
+  background: linear-gradient(145deg, #111, #0b0b0b);
   display: flex;
   flex-direction: column;
-  transition: 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  transition: 0.35s ease;
+}
+
+.mini-stats div::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 35px;
+  height: 1px;
+  background: #ff5a1f;
+  box-shadow: 0 0 12px #ff5a1f80;
 }
 
 .mini-stats div:hover {
-  border-color: var(--accent);
-  transform: translateY(-4px);
-  box-shadow: 0 15px 40px #000;
+  border-color: #ff5a1f60;
+  transform: translateY(-5px);
+  box-shadow:
+    0 15px 40px #000,
+    0 0 25px #ff5a1f10;
 }
 
 .mini-stats strong {
   font: 600 32px "Space Grotesk";
-  color: var(--accent);
+  color: #ff5a1f;
+  text-shadow: 0 0 18px #ff5a1f25;
 }
 
 .mini-stats span {
   font-size: 10px;
   letter-spacing: 1px;
   margin-top: 5px;
-  color: #999;
+  color: #888;
 }
 
 

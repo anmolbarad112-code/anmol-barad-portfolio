@@ -10,7 +10,7 @@ if (menuBtn && navLinks) {
     navLinks.classList.toggle("open");
   });
 
-  navLinks.querySelectorAll("a").forEach(link => {
+  navLinks.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
       navLinks.classList.remove("open");
     });
@@ -25,42 +25,38 @@ if (menuBtn && navLinks) {
 const filterButtons = document.querySelectorAll(".filter-btn");
 const projectCards = document.querySelectorAll(".project-card");
 
-if (filterButtons.length && projectCards.length) {
+filterButtons.forEach((button) => {
 
-  filterButtons.forEach(button => {
+  button.addEventListener("click", () => {
 
-    button.addEventListener("click", () => {
+    /* Active button */
+    filterButtons.forEach((btn) => {
+      btn.classList.remove("active");
+    });
 
-      /* Active button */
-      filterButtons.forEach(btn => {
-        btn.classList.remove("active");
-      });
-
-      button.classList.add("active");
+    button.classList.add("active");
 
 
-      /* Selected category */
-      const filter = button.dataset.filter;
+    /* Selected category */
+    const filter = button.getAttribute("data-filter");
 
 
-      /* Show / hide projects */
-      projectCards.forEach(card => {
+    /* Filter projects */
+    projectCards.forEach((card) => {
 
-        const category = card.dataset.category;
+      const category = card.getAttribute("data-category");
 
-        if (filter === "all" || category === filter) {
-          card.style.display = "";
-        } else {
-          card.style.display = "none";
-        }
-
-      });
+      if (filter === "all" || category === filter) {
+        card.style.display = "";
+      } else {
+        card.style.display = "none";
+      }
 
     });
 
   });
 
-}
+});
 
 
 /* =========================
@@ -92,7 +88,7 @@ if ("IntersectionObserver" in window) {
   const observer = new IntersectionObserver(
     (entries) => {
 
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
 
         if (entry.isIntersecting) {
           entry.target.classList.add("visible");
@@ -106,7 +102,7 @@ if ("IntersectionObserver" in window) {
     }
   );
 
-  revealElements.forEach(element => {
+  revealElements.forEach((element) => {
     observer.observe(element);
   });
 

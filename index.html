@@ -52,7 +52,12 @@
       Let's Work Together ↗
     </a>
 
-    <button class="menu-btn" aria-label="Open Menu">
+    <button
+      class="menu-btn"
+      type="button"
+      aria-label="Open Menu"
+      aria-expanded="false"
+    >
       ☰
     </button>
 
@@ -60,6 +65,7 @@
 
 
   <main>
+
 
     <!-- =====================================================
          HERO
@@ -113,13 +119,11 @@
       </div>
 
 
-      <!-- SOCIAL LINKS -->
+      <!-- HERO SOCIAL -->
 
       <div class="hero-social">
 
-        <span>
-          FOLLOW ME
-        </span>
+        <span>FOLLOW ME</span>
 
         <a href="#" aria-label="Instagram">
           ◎
@@ -158,13 +162,9 @@
 
         <div class="hero-caption">
 
-          <span>
-            Crafting
-          </span>
+          <span>Crafting</span>
 
-          <span>
-            Visual Stories
-          </span>
+          <span>Visual Stories</span>
 
           <i></i>
 
@@ -179,6 +179,7 @@
       </div>
 
     </section>
+
 
 
     <!-- =====================================================
@@ -244,6 +245,7 @@
       </div>
 
     </section>
+
 
 
     <!-- =====================================================
@@ -364,6 +366,7 @@
     </section>
 
 
+
     <!-- =====================================================
          PORTFOLIO
     ====================================================== -->
@@ -395,6 +398,7 @@
         </p>
 
       </div>
+
 
 
       <!-- =================================================
@@ -446,19 +450,20 @@
       </div>
 
 
+
       <!-- =================================================
            PORTFOLIO GRID
       ================================================== -->
 
-      <div class="portfolio-grid graphic-grid">
+      <div class="portfolio-grid graphic-grid" id="portfolioGrid">
 
 
-        <!-- =========================
-             GRAPHIC DESIGN
-        ========================== -->
+        <!-- =================================================
+             GRAPHIC DESIGN PROJECTS
+        ================================================== -->
 
 
-        <!-- 01 -->
+        <!-- 01 INDEPENDENCE DAY -->
 
         <article
           class="project-card"
@@ -486,7 +491,8 @@
         </article>
 
 
-        <!-- 02 -->
+
+        <!-- 02 MINI COOPER -->
 
         <article
           class="project-card"
@@ -514,7 +520,8 @@
         </article>
 
 
-        <!-- 03 -->
+
+        <!-- 03 SPRITE -->
 
         <article
           class="project-card"
@@ -542,7 +549,8 @@
         </article>
 
 
-        <!-- 04 -->
+
+        <!-- 04 FOOD -->
 
         <article
           class="project-card"
@@ -570,7 +578,8 @@
         </article>
 
 
-        <!-- 05 -->
+
+        <!-- 05 SHOES -->
 
         <article
           class="project-card"
@@ -598,63 +607,8 @@
         </article>
 
 
-        <!-- 06 -->
 
-        <article
-          class="project-card"
-          data-category="graphic"
-        >
-
-          <img
-            src="assets/skincare-product-view-01.jpg"
-            alt="Skincare Product Creative View 01"
-            loading="lazy"
-          >
-
-          <div class="project-info">
-
-            <span>
-              Graphic Design
-            </span>
-
-            <h3>
-              Skincare Product — View 01
-            </h3>
-
-          </div>
-
-        </article>
-
-
-        <!-- 07 -->
-
-        <article
-          class="project-card"
-          data-category="graphic"
-        >
-
-          <img
-            src="assets/skincare-product-view-02.jpg"
-            alt="Skincare Product Creative View 02"
-            loading="lazy"
-          >
-
-          <div class="project-info">
-
-            <span>
-              Graphic Design
-            </span>
-
-            <h3>
-              Skincare Product — View 02
-            </h3>
-
-          </div>
-
-        </article>
-
-
-        <!-- 08 -->
+        <!-- 06 BOAT HEADPHONE -->
 
         <article
           class="project-card"
@@ -682,12 +636,71 @@
         </article>
 
 
-        <!-- =========================
-             3D MODELS
-        ========================== -->
+
+        <!-- =================================================
+             3D ART PROJECTS
+        ================================================== -->
 
 
-        <!-- 09 -->
+        <!-- 07 SKINCARE VIEW 01 -->
+
+        <article
+          class="project-card"
+          data-category="3d"
+        >
+
+          <img
+            src="assets/skincare-product-view-01.jpg"
+            alt="Skincare Product 3D Model View 01"
+            loading="lazy"
+          >
+
+          <div class="project-info">
+
+            <span>
+              3D Art
+            </span>
+
+            <h3>
+              Skincare Product — View 01
+            </h3>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- 08 SKINCARE VIEW 02 -->
+
+        <article
+          class="project-card"
+          data-category="3d"
+        >
+
+          <img
+            src="assets/skincare-product-view-02.jpg"
+            alt="Skincare Product 3D Model View 02"
+            loading="lazy"
+          >
+
+          <div class="project-info">
+
+            <span>
+              3D Art
+            </span>
+
+            <h3>
+              Skincare Product — View 02
+            </h3>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- 09 MODERN INTERIOR VIEW 01 -->
 
         <article
           class="project-card tall"
@@ -696,7 +709,7 @@
 
           <img
             src="assets/interior-01.jpg"
-            alt="Modern Interior Render 01"
+            alt="Modern Interior 3D Render View 01"
             loading="lazy"
           >
 
@@ -715,7 +728,8 @@
         </article>
 
 
-        <!-- 10 -->
+
+        <!-- 10 MODERN INTERIOR VIEW 02 -->
 
         <article
           class="project-card tall"
@@ -724,7 +738,7 @@
 
           <img
             src="assets/interior-02.jpg"
-            alt="Modern Interior Render 02"
+            alt="Modern Interior 3D Render View 02"
             loading="lazy"
           >
 
@@ -743,7 +757,8 @@
         </article>
 
 
-        <!-- 11 -->
+
+        <!-- 11 THEATRE VIEW 01 -->
 
         <article
           class="project-card"
@@ -752,7 +767,7 @@
 
           <img
             src="assets/theatre-interior-view-01.jpg"
-            alt="Theatre Interior View 01"
+            alt="Theatre Interior 3D Model View 01"
             loading="lazy"
           >
 
@@ -771,7 +786,8 @@
         </article>
 
 
-        <!-- 12 -->
+
+        <!-- 12 THEATRE VIEW 02 -->
 
         <article
           class="project-card"
@@ -780,7 +796,7 @@
 
           <img
             src="assets/theatre-interior-view-02.jpg"
-            alt="Theatre Interior View 02"
+            alt="Theatre Interior 3D Model View 02"
             loading="lazy"
           >
 
@@ -799,7 +815,8 @@
         </article>
 
 
-        <!-- 13 -->
+
+        <!-- 13 WINDMILL VIEW 01 -->
 
         <article
           class="project-card"
@@ -827,7 +844,8 @@
         </article>
 
 
-        <!-- 14 -->
+
+        <!-- 14 WINDMILL VIEW 02 -->
 
         <article
           class="project-card"
@@ -855,7 +873,8 @@
         </article>
 
 
-        <!-- 15 -->
+
+        <!-- 15 WOODEN HOUSE VIEW 01 -->
 
         <article
           class="project-card"
@@ -864,7 +883,7 @@
 
           <img
             src="assets/wooden-house-view-01.jpg"
-            alt="Wooden House 3D View 01"
+            alt="Wooden House 3D Model View 01"
             loading="lazy"
           >
 
@@ -883,7 +902,8 @@
         </article>
 
 
-        <!-- 16 -->
+
+        <!-- 16 WOODEN HOUSE VIEW 02 -->
 
         <article
           class="project-card"
@@ -892,7 +912,7 @@
 
           <img
             src="assets/wooden-house-view-02.jpg"
-            alt="Wooden House 3D View 02"
+            alt="Wooden House 3D Model View 02"
             loading="lazy"
           >
 
@@ -910,15 +930,39 @@
 
         </article>
 
+
       </div>
 
 
-      <!-- VIEW ALL PROJECTS -->
+
+      <!-- =================================================
+           NO RESULTS MESSAGE
+      ================================================== -->
+
+      <div
+        class="portfolio-empty"
+        id="portfolioEmpty"
+        style="display: none;"
+      >
+
+        <span>
+          COMING SOON
+        </span>
+
+        <strong>
+          More projects are on the way.
+        </strong>
+
+      </div>
+
+
+
+      <!-- VIEW ALL -->
 
       <div class="portfolio-more">
 
         <a
-          href="#"
+          href="#portfolio"
           class="btn btn-ghost"
         >
           View All Projects
@@ -928,6 +972,7 @@
       </div>
 
     </section>
+
 
 
     <!-- =====================================================
@@ -1006,6 +1051,7 @@
   </main>
 
 
+
   <!-- =====================================================
        FOOTER
   ====================================================== -->
@@ -1036,9 +1082,11 @@
   </footer>
 
 
+
   <!-- CURSOR GLOW -->
 
   <div class="cursor-glow"></div>
+
 
 
   <!-- JAVASCRIPT -->

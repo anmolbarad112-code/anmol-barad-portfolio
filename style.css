@@ -1092,3 +1092,20 @@ footer::before {
     margin: 8px 0;
   }
 }
+/* =========================
+   ANMOL BARAD SIGNATURE FONT
+========================= */
+
+.hero h1 {
+  font-family: "Allura", cursive;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 0.78;
+}
+
+.hero h1 span {
+  font-family: "Allura", cursive;
+  font-weight: 400;
+  color: #ff5a1f;
+  -webkit-text-stroke: 0;
+}

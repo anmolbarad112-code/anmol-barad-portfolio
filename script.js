@@ -25,36 +25,42 @@ if (menuBtn && navLinks) {
 const filterButtons = document.querySelectorAll(".filter-btn");
 const projectCards = document.querySelectorAll(".project-card");
 
-filterButtons.forEach(button => {
+if (filterButtons.length && projectCards.length) {
 
-  button.addEventListener("click", () => {
+  filterButtons.forEach(button => {
 
-    /* Active button */
-    filterButtons.forEach(btn => {
-      btn.classList.remove("active");
-    });
+    button.addEventListener("click", () => {
 
-    button.classList.add("active");
+      /* Active button */
+      filterButtons.forEach(btn => {
+        btn.classList.remove("active");
+      });
 
-    /* Selected category */
-    const filter = button.dataset.filter;
+      button.classList.add("active");
 
-    /* Show / hide projects */
-    projectCards.forEach(card => {
 
-      const category = card.dataset.category;
+      /* Selected category */
+      const filter = button.dataset.filter;
 
-      if (filter === "all" || category === filter) {
-        card.style.display = "";
-      } else {
-        card.style.display = "none";
-      }
+
+      /* Show / hide projects */
+      projectCards.forEach(card => {
+
+        const category = card.dataset.category;
+
+        if (filter === "all" || category === filter) {
+          card.style.display = "";
+        } else {
+          card.style.display = "none";
+        }
+
+      });
 
     });
 
   });
 
-});
+}
 
 
 /* =========================
@@ -102,12 +108,6 @@ if ("IntersectionObserver" in window) {
 
   revealElements.forEach(element => {
     observer.observe(element);
-  });
-
-} else {
-
-  revealElements.forEach(element => {
-    element.classList.add("visible");
   });
 
 }

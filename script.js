@@ -9,12 +9,18 @@ if (menuBtn && navLinks) {
 
   menuBtn.addEventListener("click", () => {
     navLinks.classList.toggle("open");
+
+    const isOpen = navLinks.classList.contains("open");
+    menuBtn.setAttribute("aria-expanded", isOpen);
   });
 
   navLinks.querySelectorAll("a").forEach(link => {
+
     link.addEventListener("click", () => {
       navLinks.classList.remove("open");
+      menuBtn.setAttribute("aria-expanded", "false");
     });
+
   });
 
 }
@@ -26,6 +32,7 @@ if (menuBtn && navLinks) {
 
 const filterButtons = document.querySelectorAll(".filter-btn");
 const projectCards = document.querySelectorAll(".project-card");
+const portfolioEmpty = document.querySelector(".portfolio-empty");
 
 filterButtons.forEach(button => {
 
@@ -39,22 +46,42 @@ filterButtons.forEach(button => {
     button.classList.add("active");
 
 
-    /* Get selected filter */
+    /* Selected filter */
     const filter = button.getAttribute("data-filter");
 
+    let visibleCount = 0;
 
-    /* Filter cards */
+
+    /* Filter projects */
     projectCards.forEach(card => {
 
       const category = card.getAttribute("data-category");
 
       if (filter === "all" || category === filter) {
+
         card.style.display = "";
+
+        visibleCount++;
+
       } else {
+
         card.style.display = "none";
+
       }
 
     });
+
+
+    /* Coming Soon message */
+    if (portfolioEmpty) {
+
+      if (visibleCount === 0) {
+        portfolioEmpty.style.display = "flex";
+      } else {
+        portfolioEmpty.style.display = "none";
+      }
+
+    }
 
   });
 
@@ -88,20 +115,24 @@ const revealElements = document.querySelectorAll(".reveal");
 if ("IntersectionObserver" in window) {
 
   const observer = new IntersectionObserver(
+
     (entries) => {
 
       entries.forEach(entry => {
 
         if (entry.isIntersecting) {
           entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
         }
 
       });
 
     },
+
     {
       threshold: 0.1
     }
+
   );
 
   revealElements.forEach(element => {

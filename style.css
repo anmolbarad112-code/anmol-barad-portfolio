@@ -1109,3 +1109,40 @@ footer::before {
   color: #ff5a1f;
   -webkit-text-stroke: 0;
 }
+/* =========================
+   HERO ORANGE GLOW
+========================= */
+
+.hero-art {
+  position: relative;
+  isolation: isolate;
+}
+
+.hero-orange-circle {
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: #ff5a1f;
+  opacity: 0.18;
+  filter: blur(75px);
+  z-index: -1;
+}
+
+.hero-art img {
+  position: relative;
+  z-index: 2;
+  max-width: 100%;
+  object-fit: contain;
+  filter:
+    drop-shadow(0 0 20px #ff5a1f45)
+    drop-shadow(0 0 60px #ff5a1f30);
+  transition: 0.5s ease;
+}
+
+.hero-art img:hover {
+  transform: scale(1.03);
+  filter:
+    drop-shadow(0 0 25px #ff5a1f60)
+    drop-shadow(0 0 75px #ff5a1f40);
+}

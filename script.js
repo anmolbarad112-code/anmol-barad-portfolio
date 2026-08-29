@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const filterButtons = document.querySelectorAll(".filter-btn");
   const projectCards = document.querySelectorAll(".project-card");
-  const portfolioEmpty = document.querySelector(".portfolio-empty");
+  const portfolioEmpty = document.querySelector("#portfolioEmpty");
 
   console.log("Filter buttons:", filterButtons.length);
   console.log("Project cards:", projectCards.length);
@@ -39,20 +39,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     button.addEventListener("click", () => {
 
-      /* Remove active from all buttons */
+      // Remove active from all buttons
       filterButtons.forEach((btn) => {
         btn.classList.remove("active");
       });
 
-      /* Add active to clicked button */
+      // Add active to clicked button
       button.classList.add("active");
 
-      /* Get selected category */
+      // Get selected category
       const filter = button.dataset.filter;
 
       let visibleCount = 0;
 
-      /* Filter cards */
+      // Filter projects
       projectCards.forEach((card) => {
 
         const category = card.dataset.category;
@@ -66,13 +66,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
       });
 
-      /* Coming Soon message */
+      // Coming Soon message
       if (portfolioEmpty) {
+
         if (visibleCount === 0) {
           portfolioEmpty.style.display = "flex";
         } else {
           portfolioEmpty.style.display = "none";
         }
+
       }
 
     });
@@ -91,8 +93,10 @@ const cursorGlow = document.querySelector(".cursor-glow");
 if (cursorGlow) {
 
   document.addEventListener("mousemove", (e) => {
+
     cursorGlow.style.left = e.clientX + "px";
     cursorGlow.style.top = e.clientY + "px";
+
   });
 
 }

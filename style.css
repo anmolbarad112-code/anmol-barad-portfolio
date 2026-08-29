@@ -1146,3 +1146,30 @@ footer::before {
     drop-shadow(0 0 25px #ff5a1f60)
     drop-shadow(0 0 75px #ff5a1f40);
 }
+/* =========================
+   HERO NAME — PREMIUM STYLE
+========================= */
+
+.hero h1 {
+  font-family: "Allura", cursive;
+  font-size: clamp(100px, 11vw, 165px);
+  font-weight: 400;
+  line-height: 0.72;
+  letter-spacing: 0;
+  margin: 25px 0 35px;
+}
+
+.hero h1 span {
+  font-family: "Allura", cursive;
+  color: #f5f3ee;
+  font-weight: 400;
+  -webkit-text-stroke: 0;
+}
+
+.hero h1 strong {
+  font-family: "Allura", cursive;
+  color: #ff5a1f;
+  font-weight: 400;
+  margin-left: 85px;
+  -webkit-text-stroke: 0;
+}

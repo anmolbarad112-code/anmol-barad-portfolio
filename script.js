@@ -6,15 +6,17 @@ const menuBtn = document.querySelector(".menu-btn");
 const navLinks = document.querySelector(".nav-links");
 
 if (menuBtn && navLinks) {
+
   menuBtn.addEventListener("click", () => {
     navLinks.classList.toggle("open");
   });
 
-  navLinks.querySelectorAll("a").forEach((link) => {
+  navLinks.querySelectorAll("a").forEach(link => {
     link.addEventListener("click", () => {
       navLinks.classList.remove("open");
     });
   });
+
 }
 
 
@@ -25,24 +27,24 @@ if (menuBtn && navLinks) {
 const filterButtons = document.querySelectorAll(".filter-btn");
 const projectCards = document.querySelectorAll(".project-card");
 
-filterButtons.forEach((button) => {
+filterButtons.forEach(button => {
 
   button.addEventListener("click", () => {
 
     /* Active button */
-    filterButtons.forEach((btn) => {
+    filterButtons.forEach(btn => {
       btn.classList.remove("active");
     });
 
     button.classList.add("active");
 
 
-    /* Selected category */
+    /* Get selected filter */
     const filter = button.getAttribute("data-filter");
 
 
-    /* Filter projects */
-    projectCards.forEach((card) => {
+    /* Filter cards */
+    projectCards.forEach(card => {
 
       const category = card.getAttribute("data-category");
 
@@ -88,7 +90,7 @@ if ("IntersectionObserver" in window) {
   const observer = new IntersectionObserver(
     (entries) => {
 
-      entries.forEach((entry) => {
+      entries.forEach(entry => {
 
         if (entry.isIntersecting) {
           entry.target.classList.add("visible");
@@ -102,8 +104,14 @@ if ("IntersectionObserver" in window) {
     }
   );
 
-  revealElements.forEach((element) => {
+  revealElements.forEach(element => {
     observer.observe(element);
+  });
+
+} else {
+
+  revealElements.forEach(element => {
+    element.classList.add("visible");
   });
 
 }

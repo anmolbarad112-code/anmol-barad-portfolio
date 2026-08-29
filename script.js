@@ -29,34 +29,25 @@ filterButtons.forEach(button => {
 
   button.addEventListener("click", () => {
 
-    /* Active button change */
-
+    /* Active button */
     filterButtons.forEach(btn => {
       btn.classList.remove("active");
     });
 
     button.classList.add("active");
 
-
     /* Selected category */
-
     const filter = button.dataset.filter;
 
-
     /* Show / hide projects */
-
     projectCards.forEach(card => {
 
       const category = card.dataset.category;
 
       if (filter === "all" || category === filter) {
-
-        card.style.display = "block";
-
+        card.style.display = "";
       } else {
-
         card.style.display = "none";
-
       }
 
     });
@@ -90,26 +81,33 @@ if (cursorGlow) {
 
 const revealElements = document.querySelectorAll(".reveal");
 
-const observer = new IntersectionObserver(
-  (entries) => {
+if ("IntersectionObserver" in window) {
 
-    entries.forEach(entry => {
+  const observer = new IntersectionObserver(
+    (entries) => {
 
-      if (entry.isIntersecting) {
+      entries.forEach(entry => {
 
-        entry.target.classList.add("visible");
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
 
-      }
+      });
 
-    });
+    },
+    {
+      threshold: 0.1
+    }
+  );
 
-  },
-  {
-    threshold: 0.1
-  }
-);
+  revealElements.forEach(element => {
+    observer.observe(element);
+  });
 
+} else {
 
-revealElements.forEach(element => {
-  observer.observe(element);
-});
+  revealElements.forEach(element => {
+    element.classList.add("visible");
+  });
+
+}

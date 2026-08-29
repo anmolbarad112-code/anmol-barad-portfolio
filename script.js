@@ -6,21 +6,19 @@ const menuBtn = document.querySelector(".menu-btn");
 const navLinks = document.querySelector(".nav-links");
 
 if (menuBtn && navLinks) {
-
   menuBtn.addEventListener("click", () => {
     navLinks.classList.toggle("open");
 
     const isOpen = navLinks.classList.contains("open");
-    menuBtn.setAttribute("aria-expanded", isOpen);
+    menuBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
   });
 
-  navLinks.querySelectorAll("a").forEach(link => {
+  navLinks.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
       navLinks.classList.remove("open");
       menuBtn.setAttribute("aria-expanded", "false");
     });
   });
-
 }
 
 
@@ -28,32 +26,53 @@ if (menuBtn && navLinks) {
    PORTFOLIO FILTER
 ========================= */
 
-const filterButtons = document.querySelectorAll(".filter-btn");
-const projectCards = document.querySelectorAll(".project-card");
+document.addEventListener("DOMContentLoaded", () => {
 
-filterButtons.forEach(button => {
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const projectCards = document.querySelectorAll(".project-card");
+  const portfolioEmpty = document.querySelector(".portfolio-empty");
 
-  button.addEventListener("click", () => {
+  console.log("Filter buttons:", filterButtons.length);
+  console.log("Project cards:", projectCards.length);
 
-    /* Active button */
-    filterButtons.forEach(btn => {
-      btn.classList.remove("active");
-    });
+  filterButtons.forEach((button) => {
 
-    button.classList.add("active");
+    button.addEventListener("click", () => {
 
-    /* Selected category */
-    const filter = button.dataset.filter;
+      /* Remove active from all buttons */
+      filterButtons.forEach((btn) => {
+        btn.classList.remove("active");
+      });
 
-    /* Show / hide projects */
-    projectCards.forEach(card => {
+      /* Add active to clicked button */
+      button.classList.add("active");
 
-      const category = card.dataset.category;
+      /* Get selected category */
+      const filter = button.dataset.filter;
 
-      if (filter === "all" || category === filter) {
-        card.style.display = "";
-      } else {
-        card.style.display = "none";
+      let visibleCount = 0;
+
+      /* Filter cards */
+      projectCards.forEach((card) => {
+
+        const category = card.dataset.category;
+
+        if (filter === "all" || category === filter) {
+          card.style.display = "";
+          visibleCount++;
+        } else {
+          card.style.display = "none";
+        }
+
+      });
+
+      /* Coming Soon message */
+      if (portfolioEmpty) {
+        if (visibleCount === 0) {
+          portfolioEmpty.style.display = "flex";
+        } else {
+          portfolioEmpty.style.display = "none";
+        }
       }
 
     });
@@ -72,10 +91,8 @@ const cursorGlow = document.querySelector(".cursor-glow");
 if (cursorGlow) {
 
   document.addEventListener("mousemove", (e) => {
-
     cursorGlow.style.left = e.clientX + "px";
     cursorGlow.style.top = e.clientY + "px";
-
   });
 
 }
@@ -92,7 +109,7 @@ if ("IntersectionObserver" in window) {
   const observer = new IntersectionObserver(
     (entries) => {
 
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
 
         if (entry.isIntersecting) {
           entry.target.classList.add("visible");
@@ -107,13 +124,13 @@ if ("IntersectionObserver" in window) {
     }
   );
 
-  revealElements.forEach(element => {
+  revealElements.forEach((element) => {
     observer.observe(element);
   });
 
 } else {
 
-  revealElements.forEach(element => {
+  revealElements.forEach((element) => {
     element.classList.add("visible");
   });
 

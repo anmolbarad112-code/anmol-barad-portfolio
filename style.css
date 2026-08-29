@@ -1173,3 +1173,63 @@ footer::before {
   margin-left: 85px;
   -webkit-text-stroke: 0;
 }
+/* =========================
+   HERO PHOTO — SIZE & POSITION
+========================= */
+
+.hero-art {
+  min-height: 560px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.hero-art img {
+  width: min(430px, 90%);
+  max-height: 560px;
+  object-fit: contain;
+  transform: translateY(15px);
+}
+
+/* Orange glow behind photo */
+.hero-orange-circle {
+  width: 380px;
+  height: 380px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Mobile */
+@media (max-width: 850px) {
+  .hero-art {
+    min-height: 430px;
+  }
+
+  .hero-art img {
+    width: min(350px, 85%);
+    max-height: 430px;
+  }
+
+  .hero-orange-circle {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero-art {
+    min-height: 360px;
+  }
+
+  .hero-art img {
+    width: min(310px, 90%);
+    max-height: 360px;
+  }
+
+  .hero-orange-circle {
+    width: 250px;
+    height: 250px;
+  }
+}

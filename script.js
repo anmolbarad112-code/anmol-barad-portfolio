@@ -1,41 +1,36 @@
-const menu = document.querySelector(".menu-btn");
-const nav = document.querySelector(".nav-links");
+/* =========================
+   MOBILE MENU
+========================= */
 
-menu?.addEventListener("click", () => {
-  nav.classList.toggle("open");
-});
+const menuBtn = document.querySelector(".menu-btn");
+const navLinks = document.querySelector(".nav-links");
 
-document.querySelectorAll(".nav-links a").forEach(a => {
-  a.addEventListener("click", () => {
-    nav.classList.remove("open");
+if (menuBtn && navLinks) {
+  menuBtn.addEventListener("click", () => {
+    navLinks.classList.toggle("open");
   });
-});
 
-const glow = document.querySelector(".cursor-glow");
-
-window.addEventListener("mousemove", e => {
-  if (glow) {
-    glow.style.left = e.clientX + "px";
-    glow.style.top = e.clientY + "px";
-  }
-});
+  navLinks.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("open");
+    });
+  });
+}
 
 
-/* ==============================
+/* =========================
    PORTFOLIO FILTER
-============================== */
+========================= */
 
 const filterButtons = document.querySelectorAll(".filter-btn");
-const portfolioGrids = document.querySelectorAll(".portfolio-grid");
-const comingGrid = document.querySelector(".coming-grid");
+const projectCards = document.querySelectorAll(".project-card");
 
 filterButtons.forEach(button => {
 
   button.addEventListener("click", () => {
 
-    const filter = button.dataset.filter;
+    /* Active button change */
 
-    /* Active button */
     filterButtons.forEach(btn => {
       btn.classList.remove("active");
     });
@@ -43,80 +38,78 @@ filterButtons.forEach(button => {
     button.classList.add("active");
 
 
-    /* Graphic Design + 3D Models */
+    /* Selected category */
 
-    portfolioGrids.forEach(grid => {
+    const filter = button.dataset.filter;
 
-      const category = grid.dataset.category;
-      const heading = grid.previousElementSibling;
+
+    /* Show / hide projects */
+
+    projectCards.forEach(card => {
+
+      const category = card.dataset.category;
 
       if (filter === "all" || category === filter) {
 
-        grid.style.display = "";
-
-        if (heading && heading.classList.contains("category-title")) {
-          heading.style.display = "";
-        }
+        card.style.display = "block";
 
       } else {
 
-        grid.style.display = "none";
-
-        if (heading && heading.classList.contains("category-title")) {
-          heading.style.display = "none";
-        }
+        card.style.display = "none";
 
       }
 
     });
 
+  });
 
-    /* Video Editing + Animation */
+});
 
-    if (comingGrid) {
 
-      if (
-        filter === "all" ||
-        filter === "video" ||
-        filter === "animation"
-      ) {
+/* =========================
+   CURSOR GLOW
+========================= */
 
-        comingGrid.style.display = "";
+const cursorGlow = document.querySelector(".cursor-glow");
 
-        const boxes = comingGrid.querySelectorAll("div");
+if (cursorGlow) {
 
-        boxes.forEach(box => {
+  document.addEventListener("mousemove", (e) => {
 
-          const type = box.querySelector("span")?.textContent
-            .trim()
-            .toLowerCase();
-
-          if (filter === "all") {
-
-            box.style.display = "";
-
-          } else if (filter === "video") {
-
-            box.style.display =
-              type === "video editing" ? "" : "none";
-
-          } else if (filter === "animation") {
-
-            box.style.display =
-              type === "animation" ? "" : "none";
-
-          }
-
-        });
-
-      } else {
-
-        comingGrid.style.display = "none";
-
-      }
-
-    }
+    cursorGlow.style.left = e.clientX + "px";
+    cursorGlow.style.top = e.clientY + "px";
 
   });
 
+}
+
+
+/* =========================
+   REVEAL ANIMATION
+========================= */
+
+const revealElements = document.querySelectorAll(".reveal");
+
+const observer = new IntersectionObserver(
+  (entries) => {
+
+    entries.forEach(entry => {
+
+      if (entry.isIntersecting) {
+
+        entry.target.classList.add("visible");
+
+      }
+
+    });
+
+  },
+  {
+    threshold: 0.1
+  }
+);
+
+
+revealElements.forEach(element => {
+  observer.observe(element);
 });

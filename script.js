@@ -13,8 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             navLinks.classList.toggle("open");
 
-            const isOpen =
-                navLinks.classList.contains("open");
+            const isOpen = navLinks.classList.contains("open");
 
             menuBtn.setAttribute(
                 "aria-expanded",
@@ -23,7 +22,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         });
 
-        navLinks.querySelectorAll("a").forEach(function (link) {
+        const navItems = navLinks.querySelectorAll("a");
+
+        navItems.forEach(function (link) {
 
             link.addEventListener("click", function () {
 
@@ -55,13 +56,58 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("portfolioEmpty");
 
 
-    console.log("FILTER BUTTONS:", filterButtons.length);
-    console.log("PROJECT CARDS:", projectCards.length);
+    function filterPortfolio(selectedFilter) {
+
+        let visibleCount = 0;
+
+        projectCards.forEach(function (card) {
+
+            const category =
+                card.getAttribute("data-category");
+
+            const shouldShow =
+                selectedFilter === "all" ||
+                category === selectedFilter;
+
+            if (shouldShow) {
+
+                card.style.display = "";
+
+                visibleCount++;
+
+            } else {
+
+                card.style.display = "none";
+
+            }
+
+        });
+
+
+        /* Coming Soon message */
+
+        if (portfolioEmpty) {
+
+            if (visibleCount === 0) {
+
+                portfolioEmpty.style.display = "flex";
+
+            } else {
+
+                portfolioEmpty.style.display = "none";
+
+            }
+
+        }
+
+    }
 
 
     filterButtons.forEach(function (button) {
 
-        button.addEventListener("click", function () {
+        button.addEventListener("click", function (event) {
+
+            event.preventDefault();
 
             const selectedFilter =
                 button.getAttribute("data-filter");
@@ -70,59 +116,28 @@ document.addEventListener("DOMContentLoaded", function () {
             /* Active button */
 
             filterButtons.forEach(function (btn) {
+
                 btn.classList.remove("active");
+
             });
 
             button.classList.add("active");
 
 
-            /* Filter projects */
+            /* Apply filter */
 
-            let visibleCount = 0;
-
-            projectCards.forEach(function (card) {
-
-                const category =
-                    card.getAttribute("data-category");
-
-
-                if (
-                    selectedFilter === "all" ||
-                    category === selectedFilter
-                ) {
-
-                    card.style.display = "";
-
-                    visibleCount++;
-
-                } else {
-
-                    card.style.display = "none";
-
-                }
-
-            });
-
-
-            /* Coming Soon */
-
-            if (portfolioEmpty) {
-
-                if (visibleCount === 0) {
-
-                    portfolioEmpty.style.display = "flex";
-
-                } else {
-
-                    portfolioEmpty.style.display = "none";
-
-                }
-
-            }
+            filterPortfolio(selectedFilter);
 
         });
 
     });
+
+
+    /* =========================
+       INITIAL PORTFOLIO STATE
+    ========================= */
+
+    filterPortfolio("all");
 
 
     /* =========================
@@ -134,13 +149,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (cursorGlow) {
 
-        document.addEventListener("mousemove", function (e) {
+        document.addEventListener("mousemove", function (event) {
 
             cursorGlow.style.left =
-                e.clientX + "px";
+                event.clientX + "px";
 
             cursorGlow.style.top =
-                e.clientY + "px";
+                event.clientY + "px";
 
         });
 
@@ -148,11 +163,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =========================
-       REVEAL
+       REVEAL ANIMATION
     ========================= */
 
     const revealElements =
         document.querySelectorAll(".reveal");
+
 
     if ("IntersectionObserver" in window) {
 

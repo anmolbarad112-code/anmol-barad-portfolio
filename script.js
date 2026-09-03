@@ -8,9 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const navLinks = document.querySelector(".nav-links");
 
     if (menuBtn && navLinks) {
-
         menuBtn.addEventListener("click", function () {
-
             navLinks.classList.toggle("open");
 
             const isOpen = navLinks.classList.contains("open");
@@ -19,26 +17,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 "aria-expanded",
                 isOpen ? "true" : "false"
             );
-
         });
 
-        const navItems = navLinks.querySelectorAll("a");
-
-        navItems.forEach(function (link) {
-
+        navLinks.querySelectorAll("a").forEach(function (link) {
             link.addEventListener("click", function () {
-
                 navLinks.classList.remove("open");
-
-                menuBtn.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
+                menuBtn.setAttribute("aria-expanded", "false");
             });
-
         });
-
     }
 
 
@@ -46,39 +32,23 @@ document.addEventListener("DOMContentLoaded", function () {
        PORTFOLIO FILTER
     ========================= */
 
-    const filterButtons =
-        document.querySelectorAll(".filter-btn");
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const projectCards = document.querySelectorAll(".project-card");
+    const portfolioEmpty = document.getElementById("portfolioEmpty");
 
-    const projectCards =
-        document.querySelectorAll(".project-card");
-
-    const portfolioEmpty =
-        document.getElementById("portfolioEmpty");
-
-
-    function filterPortfolio(selectedFilter) {
+    function filterPortfolio(filter) {
 
         let visibleCount = 0;
 
         projectCards.forEach(function (card) {
 
-            const category =
-                card.getAttribute("data-category");
+            const category = card.dataset.category;
 
-            const shouldShow =
-                selectedFilter === "all" ||
-                category === selectedFilter;
-
-            if (shouldShow) {
-
-                card.style.display = "";
-
+            if (filter === "all" || category === filter) {
+                card.classList.remove("is-hidden");
                 visibleCount++;
-
             } else {
-
-                card.style.display = "none";
-
+                card.classList.add("is-hidden");
             }
 
         });
@@ -87,44 +57,29 @@ document.addEventListener("DOMContentLoaded", function () {
         /* Coming Soon message */
 
         if (portfolioEmpty) {
-
-            if (visibleCount === 0) {
-
-                portfolioEmpty.style.display = "flex";
-
-            } else {
-
-                portfolioEmpty.style.display = "none";
-
-            }
-
+            portfolioEmpty.style.display =
+                visibleCount === 0 ? "flex" : "none";
         }
-
     }
 
 
+    /* Button click */
+
     filterButtons.forEach(function (button) {
 
-        button.addEventListener("click", function (event) {
+        button.addEventListener("click", function () {
 
-            event.preventDefault();
+            const selectedFilter = button.dataset.filter;
 
-            const selectedFilter =
-                button.getAttribute("data-filter");
-
-
-            /* Active button */
+            /* Active button change */
 
             filterButtons.forEach(function (btn) {
-
                 btn.classList.remove("active");
-
             });
 
             button.classList.add("active");
 
-
-            /* Apply filter */
+            /* Filter projects */
 
             filterPortfolio(selectedFilter);
 
@@ -133,9 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-    /* =========================
-       INITIAL PORTFOLIO STATE
-    ========================= */
+    /* Default = ALL */
 
     filterPortfolio("all");
 
@@ -144,18 +97,14 @@ document.addEventListener("DOMContentLoaded", function () {
        CURSOR GLOW
     ========================= */
 
-    const cursorGlow =
-        document.querySelector(".cursor-glow");
+    const cursorGlow = document.querySelector(".cursor-glow");
 
     if (cursorGlow) {
 
         document.addEventListener("mousemove", function (event) {
 
-            cursorGlow.style.left =
-                event.clientX + "px";
-
-            cursorGlow.style.top =
-                event.clientY + "px";
+            cursorGlow.style.left = event.clientX + "px";
+            cursorGlow.style.top = event.clientY + "px";
 
         });
 
@@ -166,49 +115,39 @@ document.addEventListener("DOMContentLoaded", function () {
        REVEAL ANIMATION
     ========================= */
 
-    const revealElements =
-        document.querySelectorAll(".reveal");
-
+    const revealElements = document.querySelectorAll(".reveal");
 
     if ("IntersectionObserver" in window) {
 
-        const observer =
-            new IntersectionObserver(
-                function (entries) {
+        const observer = new IntersectionObserver(
+            function (entries) {
 
-                    entries.forEach(function (entry) {
+                entries.forEach(function (entry) {
 
-                        if (entry.isIntersecting) {
+                    if (entry.isIntersecting) {
 
-                            entry.target.classList.add("visible");
+                        entry.target.classList.add("visible");
 
-                            observer.unobserve(
-                                entry.target
-                            );
+                        observer.unobserve(entry.target);
 
-                        }
+                    }
 
-                    });
+                });
 
-                },
-                {
-                    threshold: 0.1
-                }
-            );
-
+            },
+            {
+                threshold: 0.1
+            }
+        );
 
         revealElements.forEach(function (element) {
-
             observer.observe(element);
-
         });
 
     } else {
 
         revealElements.forEach(function (element) {
-
             element.classList.add("visible");
-
         });
 
     }

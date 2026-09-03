@@ -1363,3 +1363,29 @@ footer::before {
     margin: 8px 0;
   }
 }
+/* =========================
+   PORTFOLIO TAB CLICK FIX
+========================= */
+
+.portfolio-filters {
+  position: relative;
+  z-index: 1000;
+  pointer-events: auto !important;
+}
+
+.filter-btn {
+  position: relative;
+  z-index: 1001;
+  pointer-events: auto !important;
+  cursor: pointer;
+}
+
+.cursor-glow {
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+
+.portfolio-section {
+  position: relative;
+  z-index: 1;
+}

@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
+
 <body>
 
   <!-- =========================
@@ -248,6 +249,7 @@
 
       <div class="skills-grid">
 
+
         <!-- GRAPHIC DESIGN -->
 
         <article class="skill-card">
@@ -362,6 +364,7 @@
       class="section portfolio-section"
     >
 
+
       <!-- PORTFOLIO HEADER -->
 
       <div class="portfolio-head">
@@ -446,10 +449,11 @@
 
 
         <!-- =========================
-             GRAPHIC DESIGN
+             GRAPHIC DESIGN PROJECTS
         ========================== -->
 
-        <!-- 01 INDEPENDENCE DAY -->
+
+        <!-- 01 -->
 
         <article
           class="project-card"
@@ -477,7 +481,7 @@
         </article>
 
 
-        <!-- 02 MINI COOPER -->
+        <!-- 02 -->
 
         <article
           class="project-card"
@@ -505,7 +509,7 @@
         </article>
 
 
-        <!-- 03 SPRITE -->
+        <!-- 03 -->
 
         <article
           class="project-card"
@@ -533,7 +537,7 @@
         </article>
 
 
-        <!-- 04 FOOD -->
+        <!-- 04 -->
 
         <article
           class="project-card"
@@ -561,7 +565,7 @@
         </article>
 
 
-        <!-- 05 SHOES -->
+        <!-- 05 -->
 
         <article
           class="project-card"
@@ -589,7 +593,7 @@
         </article>
 
 
-        <!-- 06 BOAT HEADPHONE -->
+        <!-- 06 -->
 
         <article
           class="project-card"
@@ -618,10 +622,11 @@
 
 
         <!-- =========================
-             3D ART
+             3D ART PROJECTS
         ========================== -->
 
-        <!-- 07 SKINCARE VIEW 01 -->
+
+        <!-- 07 -->
 
         <article
           class="project-card"
@@ -649,7 +654,7 @@
         </article>
 
 
-        <!-- 08 SKINCARE VIEW 02 -->
+        <!-- 08 -->
 
         <article
           class="project-card"
@@ -677,7 +682,7 @@
         </article>
 
 
-        <!-- 09 INTERIOR VIEW 01 -->
+        <!-- 09 -->
 
         <article
           class="project-card tall"
@@ -705,7 +710,7 @@
         </article>
 
 
-        <!-- 10 INTERIOR VIEW 02 -->
+        <!-- 10 -->
 
         <article
           class="project-card tall"
@@ -733,7 +738,7 @@
         </article>
 
 
-        <!-- 11 THEATRE VIEW 01 -->
+        <!-- 11 -->
 
         <article
           class="project-card"
@@ -761,7 +766,7 @@
         </article>
 
 
-        <!-- 12 THEATRE VIEW 02 -->
+        <!-- 12 -->
 
         <article
           class="project-card"
@@ -789,7 +794,7 @@
         </article>
 
 
-        <!-- 13 WINDMILL VIEW 01 -->
+        <!-- 13 -->
 
         <article
           class="project-card"
@@ -817,7 +822,7 @@
         </article>
 
 
-        <!-- 14 WINDMILL VIEW 02 -->
+        <!-- 14 -->
 
         <article
           class="project-card"
@@ -845,7 +850,7 @@
         </article>
 
 
-        <!-- 15 WOODEN HOUSE VIEW 01 -->
+        <!-- 15 -->
 
         <article
           class="project-card"
@@ -873,7 +878,7 @@
         </article>
 
 
-        <!-- 16 WOODEN HOUSE VIEW 02 -->
+        <!-- 16 -->
 
         <article
           class="project-card"
@@ -904,7 +909,9 @@
       </div>
 
 
-      <!-- NO RESULTS -->
+      <!-- =========================
+           EMPTY MESSAGE
+      ========================== -->
 
       <div
         class="portfolio-empty"
@@ -1051,9 +1058,221 @@
   <div class="cursor-glow"></div>
 
 
-  <!-- JAVASCRIPT -->
+  <!-- =========================
+       PORTFOLIO FILTER JAVASCRIPT
+  ========================== -->
 
-  <script src="scripts.js"></script>
+  <script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+      const buttons =
+        document.querySelectorAll(".filter-btn");
+
+      const cards =
+        document.querySelectorAll(".project-card");
+
+      const emptyMessage =
+        document.getElementById("portfolioEmpty");
+
+
+      /* =========================
+         PORTFOLIO FILTER
+      ========================== */
+
+      buttons.forEach(function (button) {
+
+        button.addEventListener("click", function () {
+
+          const selectedFilter =
+            button.getAttribute("data-filter");
+
+
+          /* ACTIVE BUTTON */
+
+          buttons.forEach(function (btn) {
+            btn.classList.remove("active");
+          });
+
+          button.classList.add("active");
+
+
+          /* FILTER PROJECTS */
+
+          let visibleCount = 0;
+
+
+          cards.forEach(function (card) {
+
+            const category =
+              card.getAttribute("data-category");
+
+
+            if (
+              selectedFilter === "all" ||
+              category === selectedFilter
+            ) {
+
+              card.style.display = "";
+
+              visibleCount++;
+
+            } else {
+
+              card.style.display = "none";
+
+            }
+
+          });
+
+
+          /* EMPTY MESSAGE */
+
+          if (emptyMessage) {
+
+            if (visibleCount === 0) {
+
+              emptyMessage.style.display = "flex";
+
+            } else {
+
+              emptyMessage.style.display = "none";
+
+            }
+
+          }
+
+        });
+
+      });
+
+
+      /* =========================
+         MOBILE MENU
+      ========================== */
+
+      const menuBtn =
+        document.querySelector(".menu-btn");
+
+      const navLinks =
+        document.querySelector(".nav-links");
+
+
+      if (menuBtn && navLinks) {
+
+        menuBtn.addEventListener("click", function () {
+
+          navLinks.classList.toggle("open");
+
+          const isOpen =
+            navLinks.classList.contains("open");
+
+          menuBtn.setAttribute(
+            "aria-expanded",
+            isOpen ? "true" : "false"
+          );
+
+        });
+
+
+        navLinks
+          .querySelectorAll("a")
+          .forEach(function (link) {
+
+            link.addEventListener("click", function () {
+
+              navLinks.classList.remove("open");
+
+              menuBtn.setAttribute(
+                "aria-expanded",
+                "false"
+              );
+
+            });
+
+          });
+
+      }
+
+
+      /* =========================
+         CURSOR GLOW
+      ========================== */
+
+      const cursorGlow =
+        document.querySelector(".cursor-glow");
+
+
+      if (cursorGlow) {
+
+        document.addEventListener("mousemove", function (e) {
+
+          cursorGlow.style.left =
+            e.clientX + "px";
+
+          cursorGlow.style.top =
+            e.clientY + "px";
+
+        });
+
+      }
+
+
+      /* =========================
+         REVEAL ANIMATION
+      ========================== */
+
+      const revealElements =
+        document.querySelectorAll(".reveal");
+
+
+      if ("IntersectionObserver" in window) {
+
+        const observer =
+          new IntersectionObserver(
+            function (entries) {
+
+              entries.forEach(function (entry) {
+
+                if (entry.isIntersecting) {
+
+                  entry.target.classList.add("visible");
+
+                  observer.unobserve(
+                    entry.target
+                  );
+
+                }
+
+              });
+
+            },
+            {
+              threshold: 0.1
+            }
+          );
+
+
+        revealElements.forEach(function (element) {
+
+          observer.observe(element);
+
+        });
+
+      } else {
+
+        revealElements.forEach(function (element) {
+
+          element.classList.add("visible");
+
+        });
+
+      }
+
+    });
+
+  </script>
+
 
 </body>
 

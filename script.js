@@ -75,8 +75,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
 
-        /* COMING SOON */
-
         if (portfolioEmpty) {
 
             if (visibleCount === 0) {
@@ -92,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =========================
-       FILTER BUTTON CLICK
+       FILTER BUTTONS
     ========================= */
 
     filterButtons.forEach(function (button) {
@@ -105,20 +103,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 button.getAttribute("data-filter");
 
 
-            /* Remove active from all */
-
             filterButtons.forEach(function (btn) {
 
                 btn.classList.remove("active");
             });
 
 
-            /* Add active to clicked button */
-
             button.classList.add("active");
 
-
-            /* Filter projects */
 
             filterPortfolio(selectedFilter);
         });
@@ -126,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =========================
-       DEFAULT = ALL
+       DEFAULT FILTER
     ========================= */
 
     filterPortfolio("all");
@@ -158,6 +150,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const revealElements =
         document.querySelectorAll(".reveal");
+
 
     if ("IntersectionObserver" in window) {
 

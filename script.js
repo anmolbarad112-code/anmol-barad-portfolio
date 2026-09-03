@@ -8,7 +8,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const navLinks = document.querySelector(".nav-links");
 
     if (menuBtn && navLinks) {
+
         menuBtn.addEventListener("click", function () {
+
             navLinks.classList.toggle("open");
 
             const isOpen = navLinks.classList.contains("open");
@@ -20,9 +22,15 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         navLinks.querySelectorAll("a").forEach(function (link) {
+
             link.addEventListener("click", function () {
+
                 navLinks.classList.remove("open");
-                menuBtn.setAttribute("aria-expanded", "false");
+
+                menuBtn.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
             });
         });
     }
@@ -32,63 +40,94 @@ document.addEventListener("DOMContentLoaded", function () {
        PORTFOLIO FILTER
     ========================= */
 
-    const filterButtons = document.querySelectorAll(".filter-btn");
-    const projectCards = document.querySelectorAll(".project-card");
-    const portfolioEmpty = document.getElementById("portfolioEmpty");
+    const filterButtons =
+        document.querySelectorAll(".filter-btn");
 
-    function filterPortfolio(filter) {
+    const projectCards =
+        document.querySelectorAll(".project-card");
+
+    const portfolioEmpty =
+        document.getElementById("portfolioEmpty");
+
+
+    function filterPortfolio(selectedFilter) {
 
         let visibleCount = 0;
 
         projectCards.forEach(function (card) {
 
-            const category = card.dataset.category;
+            const category =
+                card.getAttribute("data-category");
 
-            if (filter === "all" || category === filter) {
+            if (
+                selectedFilter === "all" ||
+                category === selectedFilter
+            ) {
+
                 card.classList.remove("is-hidden");
+
                 visibleCount++;
+
             } else {
+
                 card.classList.add("is-hidden");
             }
-
         });
 
 
-        /* Coming Soon message */
+        /* COMING SOON */
 
         if (portfolioEmpty) {
-            portfolioEmpty.style.display =
-                visibleCount === 0 ? "flex" : "none";
+
+            if (visibleCount === 0) {
+
+                portfolioEmpty.style.display = "flex";
+
+            } else {
+
+                portfolioEmpty.style.display = "none";
+            }
         }
     }
 
 
-    /* Button click */
+    /* =========================
+       FILTER BUTTON CLICK
+    ========================= */
 
     filterButtons.forEach(function (button) {
 
-        button.addEventListener("click", function () {
+        button.addEventListener("click", function (event) {
 
-            const selectedFilter = button.dataset.filter;
+            event.preventDefault();
 
-            /* Active button change */
+            const selectedFilter =
+                button.getAttribute("data-filter");
+
+
+            /* Remove active from all */
 
             filterButtons.forEach(function (btn) {
+
                 btn.classList.remove("active");
             });
 
+
+            /* Add active to clicked button */
+
             button.classList.add("active");
+
 
             /* Filter projects */
 
             filterPortfolio(selectedFilter);
-
         });
-
     });
 
 
-    /* Default = ALL */
+    /* =========================
+       DEFAULT = ALL
+    ========================= */
 
     filterPortfolio("all");
 
@@ -97,17 +136,19 @@ document.addEventListener("DOMContentLoaded", function () {
        CURSOR GLOW
     ========================= */
 
-    const cursorGlow = document.querySelector(".cursor-glow");
+    const cursorGlow =
+        document.querySelector(".cursor-glow");
 
     if (cursorGlow) {
 
         document.addEventListener("mousemove", function (event) {
 
-            cursorGlow.style.left = event.clientX + "px";
-            cursorGlow.style.top = event.clientY + "px";
+            cursorGlow.style.left =
+                event.clientX + "px";
 
+            cursorGlow.style.top =
+                event.clientY + "px";
         });
-
     }
 
 
@@ -115,41 +156,44 @@ document.addEventListener("DOMContentLoaded", function () {
        REVEAL ANIMATION
     ========================= */
 
-    const revealElements = document.querySelectorAll(".reveal");
+    const revealElements =
+        document.querySelectorAll(".reveal");
 
     if ("IntersectionObserver" in window) {
 
-        const observer = new IntersectionObserver(
-            function (entries) {
+        const observer =
+            new IntersectionObserver(
+                function (entries) {
 
-                entries.forEach(function (entry) {
+                    entries.forEach(function (entry) {
 
-                    if (entry.isIntersecting) {
+                        if (entry.isIntersecting) {
 
-                        entry.target.classList.add("visible");
+                            entry.target.classList.add("visible");
 
-                        observer.unobserve(entry.target);
+                            observer.unobserve(
+                                entry.target
+                            );
+                        }
+                    });
+                },
+                {
+                    threshold: 0.1
+                }
+            );
 
-                    }
-
-                });
-
-            },
-            {
-                threshold: 0.1
-            }
-        );
 
         revealElements.forEach(function (element) {
+
             observer.observe(element);
         });
 
     } else {
 
         revealElements.forEach(function (element) {
+
             element.classList.add("visible");
         });
-
     }
 
 });

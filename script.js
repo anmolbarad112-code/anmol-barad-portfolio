@@ -1,130 +1,83 @@
-/* =========================
-   MOBILE MENU
-========================= */
+document.addEventListener("DOMContentLoaded", function () {
 
-document.addEventListener("DOMContentLoaded", () => {
+  // ================================
+  // MOBILE MENU
+  // ================================
 
   const menuBtn = document.querySelector(".menu-btn");
   const navLinks = document.querySelector(".nav-links");
 
   if (menuBtn && navLinks) {
-
-    menuBtn.addEventListener("click", () => {
-
+    menuBtn.addEventListener("click", function () {
       navLinks.classList.toggle("open");
 
       const isOpen = navLinks.classList.contains("open");
-
-      menuBtn.setAttribute(
-        "aria-expanded",
-        isOpen ? "true" : "false"
-      );
-
+      menuBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });
 
-    navLinks.querySelectorAll("a").forEach((link) => {
-
-      link.addEventListener("click", () => {
-
+    navLinks.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
         navLinks.classList.remove("open");
-
-        menuBtn.setAttribute(
-          "aria-expanded",
-          "false"
-        );
-
+        menuBtn.setAttribute("aria-expanded", "false");
       });
-
     });
-
   }
 
 
-  /* =========================
-     PORTFOLIO FILTER
-  ========================= */
+  // ================================
+  // PORTFOLIO FILTER
+  // ================================
 
-  const filterButtons =
-    document.querySelectorAll(".filter-btn");
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const projectCards = document.querySelectorAll(".project-card");
+  const portfolioEmpty = document.getElementById("portfolioEmpty");
 
-  const projectCards =
-    document.querySelectorAll(".project-card");
+  console.log("Filter buttons:", filterButtons.length);
+  console.log("Project cards:", projectCards.length);
 
-  const portfolioEmpty =
-    document.querySelector("#portfolioEmpty");
+  filterButtons.forEach(function (button) {
 
+    button.addEventListener("click", function () {
 
-  console.log(
-    "Filter buttons:",
-    filterButtons.length
-  );
+      const selectedFilter = button.getAttribute("data-filter");
 
-  console.log(
-    "Project cards:",
-    projectCards.length
-  );
+      console.log("Selected filter:", selectedFilter);
 
-
-  filterButtons.forEach((button) => {
-
-    button.addEventListener("click", () => {
-
-      /* Remove active class */
-      filterButtons.forEach((btn) => {
+      // Active button
+      filterButtons.forEach(function (btn) {
         btn.classList.remove("active");
       });
 
-
-      /* Add active class */
       button.classList.add("active");
 
 
-      /* Get selected category */
-      const filter =
-        button.getAttribute("data-filter");
+      // Show / hide projects
+      let visibleProjects = 0;
 
+      projectCards.forEach(function (card) {
 
-      let visibleCount = 0;
-
-
-      /* Filter project cards */
-      projectCards.forEach((card) => {
-
-        const category =
-          card.getAttribute("data-category");
-
+        const category = card.getAttribute("data-category");
 
         if (
-          filter === "all" ||
-          category === filter
+          selectedFilter === "all" ||
+          category === selectedFilter
         ) {
-
           card.style.display = "";
-
-          visibleCount++;
-
+          visibleProjects++;
         } else {
-
           card.style.display = "none";
-
         }
 
       });
 
 
-      /* Coming Soon */
+      // Coming soon message
       if (portfolioEmpty) {
-
-        if (visibleCount === 0) {
-
+        if (visibleProjects === 0) {
           portfolioEmpty.style.display = "flex";
-
         } else {
-
           portfolioEmpty.style.display = "none";
-
         }
-
       }
 
     });
@@ -132,76 +85,58 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  /* =========================
-     CURSOR GLOW
-  ========================= */
+  // ================================
+  // CURSOR GLOW
+  // ================================
 
-  const cursorGlow =
-    document.querySelector(".cursor-glow");
-
+  const cursorGlow = document.querySelector(".cursor-glow");
 
   if (cursorGlow) {
 
-    document.addEventListener("mousemove", (e) => {
+    document.addEventListener("mousemove", function (e) {
 
-      cursorGlow.style.left =
-        e.clientX + "px";
-
-      cursorGlow.style.top =
-        e.clientY + "px";
+      cursorGlow.style.left = e.clientX + "px";
+      cursorGlow.style.top = e.clientY + "px";
 
     });
 
   }
 
 
-  /* =========================
-     REVEAL ANIMATION
-  ========================= */
+  // ================================
+  // REVEAL ANIMATION
+  // ================================
 
-  const revealElements =
-    document.querySelectorAll(".reveal");
-
+  const revealElements = document.querySelectorAll(".reveal");
 
   if ("IntersectionObserver" in window) {
 
-    const observer =
-      new IntersectionObserver(
-        (entries) => {
+    const observer = new IntersectionObserver(
+      function (entries) {
 
-          entries.forEach((entry) => {
+        entries.forEach(function (entry) {
 
-            if (entry.isIntersecting) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
 
-              entry.target.classList.add("visible");
+        });
 
-              observer.unobserve(
-                entry.target
-              );
+      },
+      {
+        threshold: 0.15
+      }
+    );
 
-            }
-
-          });
-
-        },
-        {
-          threshold: 0.1
-        }
-      );
-
-
-    revealElements.forEach((element) => {
-
+    revealElements.forEach(function (element) {
       observer.observe(element);
-
     });
 
   } else {
 
-    revealElements.forEach((element) => {
-
+    revealElements.forEach(function (element) {
       element.classList.add("visible");
-
     });
 
   }

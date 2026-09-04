@@ -89,33 +89,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /* =========================
-       FILTER BUTTONS
-    ========================= */
-
-    filterButtons.forEach(function (button) {
-
-        button.addEventListener("click", function (event) {
-
-            event.preventDefault();
-
-            const selectedFilter =
-                button.getAttribute("data-filter");
-
-
-            filterButtons.forEach(function (btn) {
-
-                btn.classList.remove("active");
-            });
-
-
-            button.classList.add("active");
-
-
-            filterPortfolio(selectedFilter);
-        });
-    });
-
 
     /* =========================
        DEFAULT FILTER

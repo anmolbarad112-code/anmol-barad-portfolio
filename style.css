@@ -320,68 +320,35 @@ footer span {
    HERO ART
 ========================= */
 
-.hero-art {
-  grid-column: 2;
-  grid-row: 1;
-  position: relative;
-  width: 100%;
-  height: 620px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  isolation: isolate;
-  z-index: 5;
-}
-
-.hero-orange-circle {
-  position: absolute;
-  width: 390px;
-  height: 390px;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  background: var(--accent);
-  opacity: 0.9;
-  filter: blur(2px);
-  z-index: -2;
-}
-
-.hero-art::before {
-  content: "";
-  position: absolute;
-  width: 480px;
-  height: 480px;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  background: var(--accent);
-  opacity: 0.16;
-  filter: blur(80px);
-  z-index: -3;
-}
 
 .hero-art > img {
   position: relative;
-  width: 470px;
-  max-width: 90%;
-  height: 560px;
-  object-fit: contain;
-  object-position: center bottom;
   z-index: 5;
-  filter:
-    drop-shadow(0 0 18px #ff5a1f40)
-    drop-shadow(0 0 60px #ff5a1f25);
+  width: 390px;
+  height: 390px;
+  max-width: 85%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  box-shadow: 0 0 25px #ff5a1f40,
+              0 0 60px #ff5a1f25;
   transition: 0.5s ease;
 }
 
 .hero-art > img:hover {
-  transform: scale(1.025);
-  filter:
-    drop-shadow(0 0 25px #ff5a1f60)
-    drop-shadow(0 0 80px #ff5a1f35);
+  transform: scale(1.04);
+  box-shadow: 0 0 35px #ff5a1f60,
+              0 0 80px #ff5a1f35;
 }
+
+@media (max-width: 768px) {
+  .hero-art > img {
+    width: 290px;
+    height: 290px;
+  }
+}
+
 
 /* =========================
    BACKGROUND AB

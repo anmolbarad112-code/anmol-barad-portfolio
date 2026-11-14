@@ -336,18 +336,6 @@ footer span {
   transition: 0.5s ease;
 }
 
-.hero-art > img:hover {
-  transform: scale(1.04);
-  box-shadow: 0 0 35px #ff5a1f60,
-              0 0 80px #ff5a1f35;
-}
-
-@media (max-width: 768px) {
-  .hero-art > img {
-    width: 290px;
-    height: 290px;
-  }
-}
 
 
 /* =========================
